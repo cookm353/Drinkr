@@ -28,3 +28,52 @@ The API will be used to retrieve information on the drinks, and the database wil
 - Usernames and passwords
   - Passwords will be hashed using Bcrypt
   - A user's email address, first name, and last name will only be visible to the user
+
+
+
+Drinks
+------
+-user_id
+-name
+-video
+-category
+-IBA_category_id
+-is_alcoholic
+-glass_id
+-instructions
+
+Ingredient_Amt
+--------------
+-id
+-drink_id
+-ingredient_id
+-amt_id
+
+IBA_Categories
+--------------
+-id
+-description
+
+Glasses
+-------
+-id
+-name
+
+
+
+Drink
+-----
+Name
+Video
+Category
+Is alcoholic
+Glass
+Instructions
+Image_url
+Ingredients
+Ingredient amounts
+
+id
+drink_id
+ingredient_id
+amt
