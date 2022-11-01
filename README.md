@@ -21,7 +21,7 @@ The API will be used to retrieve information on the drinks, and the database wil
 
 ### Schema
 
-![Database schema for Drinkr](/db_schema.png "Schema")
+![Database schema for Drinkr](static/images/db_schema.png "Schema")
 
 ### Sensitive Information
 
