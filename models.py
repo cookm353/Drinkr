@@ -71,3 +71,33 @@ class Drink(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
+    instructions = db.Column(db.Text, nullable=False)
+    is_alcoholic = db.Column(db.Bool, nullable=False)
+    imgURL = db.Column(db.Text, nullable=True)
+    videoURL = db.Column(db.Text, nullable=True)
+    
+    @classmethod
+    def add(cls, drinkData, userId):
+        """Add a custom drink to the DB"""
+        user = user.get(userId)
+        
+        ...
+        
+    @classmethod
+    def get(cls, drinkId):
+        """Retrieve a drink a user has added"""
+        return cls.query.get_or_404(drinkId)
+    
+    @classmethod
+    def get_by_user(cls, userId):
+        """Retrieve all of the drinks a user has added"""
+        user = user.get(userId)
+        
+    def edit(self, drinkData):
+        """Edit a custom drink"""
+        ...
+        
+    @classmethod
+    def delete(cls, drinkId):
+        """Delete a custom drink"""
+        ...
