@@ -1,21 +1,30 @@
-# API List
+# Drinkr
 
-## Sources
+by M. Cook
 
-- [API List](https://apilist.fun/)
-- [Public APIs repo](https://github.com/public-apis/public-apis)
-- [Rapid API](https://rapidapi.com/collection/list-of-free-apis)
+## Objective
 
-## Possible APIs
+The website will be a convenient resource for looking up mixed drink recipes.  Users will be able to look up cocktail recipes by name, ingredient, type of glass, or type of drink.  Users will also be able to mark drinks as favorites and leave comments, which would be helpful for annotating recipes.
 
-- [The Cocktail DB](https://www.thecocktaildb.com/api.php)
-  - Let user search by ingredients
-  - Display all cocktails by ingredient
-  - Filter by aperitif vs. digestif, type of glass needed, shaken or stirred
-  - Let users submit their own recipes and annotate/modify existing recipes
-  - New/annotated recipes should be stored in DB
-- [TasteDive](https://tastedive.com/read/api)
-  - Recommender service
-  - Users can input movies, music, books, etc. and get recommendations back
+## Audience
 
-- Make sure the API works!!
+This site will be intended for people of legal drinking age who enjoy dabbling in mixology.
+
+## Data Sources
+
+API: [The Cocktail DB](https://www.thecocktaildb.com/api.php)
+Database: PostgreSQL
+
+The API will be used to retrieve information on the drinks, and the database will store information on the users, comments left on drinks, and any custom drinks they add.
+
+## Approach
+
+### Schema
+
+![Database schema for Drinkr](/db_schema.png "Schema")
+
+### Sensitive Information
+
+- Usernames and passwords
+  - Passwords will be hashed using Bcrypt
+  - A user's email address, first name, and last name will only be visible to the user
