@@ -4,6 +4,15 @@ from flask_bcrypt import Bcrypt
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinkr_test'
+app.config['SQLALCHEMY_ECHO'] = False
+app.config['WTF_CSRF_ENABLED'] = False
+app.config['TESTING'] = True
+app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
+
+db.drop_all()
+db.create_all()
+
 def connect_db(app):
     db.app = app
     db.init_app(app)
@@ -26,7 +35,16 @@ class User(db.Model):
     @classmethod
     def register(cls, formData):
         """Create a new user based on form data"""
-        ...
+        username = formData['username']
+        password = formData['password']
+        email = formData['email']
+        firstName = formData['firstName']
+        lastName = formData['lastName']
+        
+        hashed_pwd = cls.hash_password(password)
+        
+        return cls(username=username, password=hashed_pwd, email=email,
+                   firstName=firstName, lastName=lastName)
         
     @classmethod
     def authenticate(cls, loginData):
@@ -40,6 +58,11 @@ class User(db.Model):
             return user
         else:
             return False
+        
+    @staticmethod
+    def hash_password(password):
+        """Helper method for seed"""
+        return bcrypt.generate_password_hash(password).decode('utf-8')
     
     # Utility methods
     
@@ -101,3 +124,39 @@ class Drink(db.Model):
     def delete(cls, drinkId):
         """Delete a custom drink"""
         ...
+        
+
+class Glass(db.Model):
+    """Class representing a glass type"""
+    
+    __tablename__ = 'glasses'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    
+    # Utility methods
+    
+    @classmethod
+    def get(cls, glassId):
+        """Fetch a glass"""
+        return cls.query.get_or_404(glassId)
+    
+    @classmethod
+    def get_all(cls):
+        return cls.query.all()
+    
+    # Dunders
+    
+    
+class Ingredient(db.Model):
+    """Class representing an ingredient"""
+    
+    __tablename__ = 'ingredients'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    
+    @classmethod
+    def get(cls, id):
+        """Return an ingredient"""
+        
