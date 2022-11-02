@@ -99,6 +99,8 @@ class Drink(db.Model):
     imgURL = db.Column(db.Text, nullable=True)
     videoURL = db.Column(db.Text, nullable=True)
     
+    user = db.relationship('User', backref='drinks')
+    
     @classmethod
     def add(cls, drinkData, userId):
         """Add a custom drink to the DB"""
