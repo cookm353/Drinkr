@@ -99,7 +99,7 @@ class Drink(db.Model):
     imgURL = db.Column(db.Text, nullable=True)
     videoURL = db.Column(db.Text, nullable=True)
     
-    user = db.relationship('User', backref='drinks')
+    # user = db.relationship('User', backref='drinks')
     
     @classmethod
     def add(cls, drinkData, userId):
@@ -162,6 +162,30 @@ class Ingredient(db.Model):
     name = db.Column(db.Text, nullable=False)
     
     @classmethod
-    def get(cls, id):
+    def get(cls, id: int):
         """Return an ingredient"""
+        return Ingredient.query.get_or_404(id)
+    
+    @classmethod
+    def getByName(cls, name: str):
+        """Return an ingredient using its name"""
+        name = name.title()
+        return Ingredient.query.filter_by(name=name).first()
+    
+    @classmethod
+    def getAll(cls):
+        """Return all ingredients"""
+        return Ingredient.query.all()
+    
+    @classmethod
+    def add(cls, ingredientData: dict):
+        """Add a new ingredient"""
+        name = ingredientData.get('name')
+        description = ingredientData.get('description', '')
+        type = ingredientData.get('type', '')
         
+        newIngredient = Ingredient(name=name, description=description, type=type)
+        
+    def __repr__(self):
+        repr = f"<Ingredient name={self.name} type={self.type} isAlcoholic={self.isAlcoholic}>"
+        return repr
