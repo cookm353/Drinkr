@@ -1,5 +1,5 @@
 from unittest import TestCase
-from models import db, User, Glass
+from models import db, User, Glass, Ingredient, Drink
 from app import app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinkr_test'
@@ -112,4 +112,45 @@ class TestGlass(TestCase):
             
             
 class TestDrink(TestCase):
-    ...
+    def setUp(self):
+        ...
+    
+    def tearDown(self):
+        db.session.rollback()
+
+    
+class TestIngredient(TestCase):
+    def setUp(self):
+        Ingredient.query.delete()
+        
+        bourbon = Ingredient(name='Bourbon', type='Whiskey')
+        gin = Ingredient(name='Gin', type='Gin')
+        scotch = Ingredient(name='Scotch', type='Whiskey')
+        
+        db.session.add_all([bourbon, gin, scotch])
+        db.session.commit()
+        
+    def tearDown(self):
+        db.session.rollback()
+        
+    def testGettingIngredient(self):
+        bourbon = Ingredient.get(1)
+        
+        self.assertIsInstance(bourbon, Ingredient)
+        self.assertEqual(bourbon.name, 'Bourbon')
+        
+    def testGettingNonexistentIngredient(self):
+        with self.assertRaises(Exception):
+            drink = Ingredient.get(3)
+            
+    def testGettingAll(self):
+        ingredients = Ingredient.getAll()
+        
+        self.assertIsInstance(ingredients, list)
+        for ingredient in ingredients:
+            self.assertIsInstance(ingredient, Ingredient)
+            
+    def testRepr(self):
+        gin = Ingredient.get(2)
+        
+        self.assertEqual(repr(gin), '<Ingredient name=Gin type=Gin>')
