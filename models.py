@@ -70,6 +70,11 @@ class User(db.Model):
         """Return all users"""
         return cls.query.all()
     
+    @classmethod
+    def getByUsername(cls, username):
+        """Return a user based on their username"""
+        return cls.query.filter_by(username=username).first()
+    
     def edit(self):
         ...
         
@@ -96,10 +101,16 @@ class Drink(db.Model):
     name = db.Column(db.Text, nullable=False)
     instructions = db.Column(db.Text, nullable=False)
     is_alcoholic = db.Column(db.Boolean, nullable=False)
-    imgURL = db.Column(db.Text, nullable=True)
-    videoURL = db.Column(db.Text, nullable=True)
+    img_URL = db.Column(db.Text, nullable=True)
+    video_URL = db.Column(db.Text, nullable=True)
+    glass_id = db.Column(db.Integer, db.ForeignKey('glasses.id',
+                                                   onupdate='CASCADE'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id',
+                                                  ondelete='CASCADE',
+                                                  onupdate='CASCADE'))
     
-    # user = db.relationship('User', backref='drinks')
+    user = db.relationship('User', backref='drinks')
+    glass = db.relationship('Glass', backref='drink')
     
     @classmethod
     def add(cls, drinkData, userId):
@@ -117,6 +128,11 @@ class Drink(db.Model):
     def getByUser(cls, userId):
         """Retrieve all of the drinks a user has added"""
         user = user.get(userId)
+        
+    @classmethod
+    def getByName(cls, name):
+        """Return a drink based on its name"""
+        cls.query.filter_by(name=name).first()
         
     def edit(self, drinkData):
         """Edit a custom drink"""
@@ -189,3 +205,58 @@ class Ingredient(db.Model):
     def __repr__(self):
         repr = f"<Ingredient name={self.name} type={self.type} isAlcoholic={self.isAlcoholic}>"
         return repr
+    
+
+class DrinkIngredient(db.Model):
+    """Join table between drinks and ingredients"""
+    __tablename__ = 'drink_ingredients'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    amount = db.Column(db.Text, nullable=False)
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
+                                                        ondelete='CASCADE',
+                                                        onupdate='CASCADE'))
+    drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
+                                                   ondelete='CASCADE',
+                                                   onupdate='CASCADE'))
+    
+    # insert relationships
+
+
+class Comment(db.Model):
+    """Class modeling comments left by users"""
+    __tablename__ = 'comments'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.Text, nullable=False)
+    ranking = db.Column(db.Integer, default=0)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id',
+                                                 ondelete='CASCADE',
+                                                 onupdate='CASCADE'))
+    drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
+                                                 ondelete='CASCADE',
+                                                 onupdate='CASCADE'))
+    
+    # Utility methods
+    
+    @classmethod
+    def get(cls, id):
+        return cls.query.get_or_404(id)
+    
+    @classmethod
+    def getAll(cls):
+        return cls.query.all()
+    
+    @classmethod
+    def getByUser(cls, username):
+        """Return all comments a user has made"""
+        user = User.getByUsername(username)
+        
+        return cls.query.filter_by(user_id=user.id).all()
+    
+    @classmethod
+    def getByDrink(cls, drink):
+        """Return all comments made on a drink"""
+        drink = Drink.getByName(name)
+    
+    # Dunders
