@@ -39,8 +39,6 @@ The API will be used to retrieve information on the drinks, and the database wil
     - [x] username
     - [x] password
     - [x] email
-    - [x] firstName
-    - [x] lastName
   - [ ] Methods
     - [x] register
     - [x] authenticate
@@ -96,6 +94,12 @@ The API will be used to retrieve information on the drinks, and the database wil
     - [ ] add
     - [ ] edit
     - [ ] delete
+
+#### Pages
+
+- [ ] Index
+  - Basic landing page
+  - 
 
 Drinks
 ------
