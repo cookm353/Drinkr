@@ -29,7 +29,73 @@ The API will be used to retrieve information on the drinks, and the database wil
   - Passwords will be hashed using Bcrypt
   - A user's email address, first name, and last name will only be visible to the user
 
+### Steps
 
+#### Build Model
+
+- [ ] User model
+  - [x] Columns
+    - [x] id
+    - [x] username
+    - [x] password
+    - [x] email
+    - [x] firstName
+    - [x] lastName
+  - [ ] Methods
+    - [x] register
+    - [x] authenticate
+    - [x] hash password
+    - [x] repr
+    - [x] get
+    - [x] getAll
+- [x] Glass model
+  - [x] Columns
+    - [x] id
+    - [x] name
+  - [x] Methods
+    - [x] get
+    - [x] getAll
+    - [x] repr
+- [ ] Drink model
+  - [x] Columns
+    - [x] id (PK)
+    - [x] name (text)
+    - [x] glass_id (FK)
+    - [x] user_id (FK)
+    - [x] instructions (text)
+    - [x] isAlcoholic (Boolean)
+    - [x] imageUrl (text)
+    - [x] videoUrl (text)
+  - [ ] Methods
+    - [ ] add
+    - [ ] get
+    - [ ] getByUser
+    - [ ] getByName
+    - [ ] edit
+    - [ ] delete
+- [ ] Drink_ingredient model
+  - [x] Columns
+    - [x] id (PK)
+    - [x] drink_id (FK)
+    - [x] ingredient_id (FK)
+    - [x] amount (text)
+  - [ ] Relationships
+- [ ] Comments
+  - [x] Columns
+    - [x] id (PK)
+    - [x] content (text)
+    - [x] ranking (int)
+    - [x] user_id (FK)
+    - [x] drink_id (FK)
+  - [ ] Methods
+    - [ ] repr
+    - [x] get
+    - [x] getAll
+    - [x] getByUser
+    - [ ] getByDrink
+    - [ ] add
+    - [ ] edit
+    - [ ] delete
 
 Drinks
 ------
