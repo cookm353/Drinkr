@@ -1,0 +1,58 @@
+/* General Styles */
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    background-color: gray;
+}
+
+/* Navbar Styles */
+
+#logo {
+    height: 40px;
+
+}
+
+body > nav {
+    background-color: black;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.5s;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+    color: plum
+    
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar li {
+    padding: 7px;
+}
+
+/* Body Styles */
+
+#main-div {
+    min-height: 100%;
+    height: 100%;
+    background-color: grey;
+}
+
+#main-div > p {
+    /* min-height: 100%; */
+    /* height: 100%; */
+    /* background-color: black; */
+    color: blue;
+}
