@@ -9,12 +9,10 @@ def addUsers():
     User.query.delete()
 
     aliceData = {
-        'username': 'alice', 'firstName': 'Alice', 'lastName': 'Tester',
-        'email': 'alice@test.com', 'password': 'test123'
+        'username': 'alice', 'email': 'alice@test.com', 'password': 'test123'
     }
     bobData = {
-        'username': 'bob', 'firstName': 'Bob', 'lastName': 'Tester',
-        'email': 'bob@test.com', 'password': 'qwerty'
+        'username': 'bob', 'email': 'bob@test.com', 'password': 'qwerty'
     }
 
     User.register(aliceData)
