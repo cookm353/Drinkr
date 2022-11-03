@@ -41,7 +41,7 @@ def login():
 def logout():
     ...
 
-
+# User related routes
 
 @app.route('/user/<int:userId>')
 def user_page(userId):
