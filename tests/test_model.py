@@ -16,9 +16,9 @@ class TestUser(TestCase):
         User.query.delete()
         
         alice = User(username='alice', password=User.hashPassword('test123'),
-                     email='alice@test.com', firstName='Alice', lastName='Tester')
+                     email='alice@test.com')
         bob = User(username='bob', password=User.hashPassword('test123'),
-                     email='bob@test.com', firstName='bob', lastName='Tester')
+                     email='bob@test.com')
         
         db.session.add_all([alice, bob])
         db.session.commit()
@@ -43,20 +43,20 @@ class TestUser(TestCase):
     def testRegistration(self):
         charlieData = {
             'username': 'charlie', 'password': 'test123', 
-            'email': 'charlie@test.com', 'firstName': 'Charlie', 'lastName': 'Tester'
+            'email': 'charlie@test.com'
         }
         User.register(charlieData)
         
         charlie = User.get(3)
         
-        self.assertEqual(charlie.firstName, 'Charlie')
+        self.assertEqual(charlie.username, 'charlie')
         self.assertIsInstance(charlie, User)
         
     def testValidLogin(self):
         loginData = {'username': 'alice', 'password': 'test123'}
         user = User.authenticate(loginData)
         
-        self.assertEqual(user.firstName, 'Alice')
+        self.assertEqual(user.username, 'alice')
         
     def testInvalidLogin(self):
         loginData = {'username': 'alice', 'password': 'qwerty'}
@@ -68,7 +68,7 @@ class TestUser(TestCase):
         """Testing __repr__"""
         user = User.get(1)
         
-        self.assertEqual(repr(user), '<User username=alice firstName=Alice lastName=Tester email=alice@test.com>')
+        self.assertEqual(repr(user), '<User username=alice email=alice@test.com>')
         
     def testEditingUser(self):
         ...

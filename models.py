@@ -18,8 +18,6 @@ class User(db.Model):
     username = db.Column(db.Text, nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False)
-    firstName = db.Column(db.Text, nullable=False)
-    lastName = db.Column(db.Text, nullable=False)
     
     # Registration and authentication related methods
     
@@ -29,13 +27,10 @@ class User(db.Model):
         username = formData['username']
         password = formData['password']
         email = formData['email']
-        firstName = formData['firstName']
-        lastName = formData['lastName']
         
         hashed_pwd = cls.hashPassword(password)
         
-        newUser = cls(username=username, password=hashed_pwd, email=email,
-                   firstName=firstName, lastName=lastName)
+        newUser = cls(username=username, password=hashed_pwd, email=email)
         
         db.session.add(newUser)
         db.session.commit()
@@ -87,10 +82,10 @@ class User(db.Model):
     # Dunders
     
     def __repr__(self):
-        return f"<User username={self.username} firstName={self.firstName} lastName={self.lastName} email={self.email}>"
+        return f"<User username={self.username} email={self.email}>"
     
     def __str__(self):
-        return "Username:\t{self.username}\nEmail:\t{self.email}\nFirst name:\t{self.firstName}\nLast name:\t{self.lastName}"
+        return "Username:\t{self.username}\nEmail:\t{self.email}"
     
 class Drink(db.Model):
     """Class modeling a drink"""
