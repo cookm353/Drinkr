@@ -3,7 +3,9 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+
 <div class="container col-3">
+    <h2 class="text-center">Log In</h2>
     <form action="/login" method="POST" id="loginForm">
         {{ form.hidden_tag() }}
 
