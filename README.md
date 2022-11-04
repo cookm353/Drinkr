@@ -129,8 +129,6 @@ Glasses
 -id
 -name
 
-
-
 Drink
 -----
 Name
@@ -147,3 +145,9 @@ id
 drink_id
 ingredient_id
 amt
+
+### Database backup
+
+```bash
+pg_dump -U matt drinkr > drinkr.pgsql
+```
