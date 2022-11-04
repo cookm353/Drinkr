@@ -86,11 +86,12 @@ class User(db.Model):
     
     def __str__(self):
         return "Username:\t{self.username}\nEmail:\t{self.email}"
-    
-class Drink(db.Model):
+
+ 
+class CustomDrink(db.Model):
     """Class modeling a drink"""
     
-    __tablename__ = "drinks"
+    __tablename__ = "custom_drinks"
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
@@ -252,6 +253,26 @@ class Comment(db.Model):
     @classmethod
     def getByDrink(cls, drink):
         """Return all comments made on a drink"""
-        drink = Drink.getByName(name)
+        drink = CustomDrink.getByName(name)
     
     # Dunders
+    
+class UserIngredients(db.Model):
+    """Join table for ingredients a user has"""
+    __tablename__ = 'user_ingredients'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', 
+                                                  ondelete='CASCADE',
+                                                  onupdate='CASCADE'))
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
+                                                        ondelete='CASCADE',
+                                                        onupdate='CASCADE'))
+    
+class Drink(db.Model):
+    """Table to hold names of drinks and links to API"""
+    __tablename__ = 'drinks'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    url = db.Column(db.Text, nullable=False)
