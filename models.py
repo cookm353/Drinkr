@@ -36,14 +36,14 @@ class User(db.Model):
         db.session.commit()
         
     @classmethod
-    def authenticate(cls, loginData):
+    def authenticate(cls, username, password):
         """Verify a user's login credentials"""
-        username = loginData['username']
-        pwd = loginData['password']
+        # username = loginData['username']
+        # pwd = loginData['password']-
         
         user = User.query.filter_by(username=username).first()
         
-        if user and bcrypt.check_password_hash(user.password, pwd):
+        if user and bcrypt.check_password_hash(user.password, password):
             return user
         else:
             return False
