@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, abort, request, g, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, User, Drink
+from models import connect_db, User, CustomDrink
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -98,6 +98,6 @@ def user_page(userId):
 def show_drinks():
     ...
     
-@app.route('/drinks/<int:drinkId>')
-def show_drink(drinkId):
-    drink = Drink.get(drinkId)
+@app.route('/drinks/<str:drinkName>')
+def show_drink(drinkName):
+    drink = CustomDrink.getByName(drinkName)
