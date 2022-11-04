@@ -1,5 +1,5 @@
 from unittest import TestCase
-from models import db, User, Glass, Ingredient, Drink
+from models import db, User, Glass, Ingredient, CustomDrink
 from app import app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinkr_test'
