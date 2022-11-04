@@ -1,5 +1,5 @@
 from app import app
-from models import db, User, Glass, Drink, Ingredient
+from models import db, User, Glass, CustomDrink, Ingredient, Drink, DrinkIngredient
 import requests
 
 db.drop_all()
@@ -49,7 +49,28 @@ def getIngredients():
     db.session.commit()
 
 
+def getDrinks():
+    Drink.query.delete()
+    
+    with open('seed_files/drinks.txt', 'r') as file:
+        drinks = file.readlines()
+        
+    drinks = [drink.replace(' \n', '') for drink in drinks]
+        
+    for drink in drinks:
+        newDrink = Drink(name=drink)
+        
+        db.session.add(newDrink)
+        
+    db.session.commit()
+    
+
 def main():
     addUsers()
     getGlasses()
     getIngredients()
+    getDrinks()
+    
+
+if __name__ == "__main__":
+    main()
