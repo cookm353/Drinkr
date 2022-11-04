@@ -36,8 +36,8 @@
                 <li><a href="/signup" id="signUp">Sign Up</a></li>
                 <li><a href="/login" id="logIn">Log In</a></li>
                 {% else %}
-                <li><a href="/user/{{g.user.id}}" id="signUp">Sign Up</a></li>
-                <li><a href="login" id="logIn">Log In</a></li>
+                <li><a href="/user/{{g.user.id}}" id="signUp">{{ g.user.username }}</a></li>
+                <li><a href="/logout" id="logOut">Log Out</a></li>
                 {% endif %}
             </ul>
         </div>
