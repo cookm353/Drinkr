@@ -1,5 +1,6 @@
 # Save contents of API to text files to build certain tables
-
+from models import Glass, connect_db, db
+import sqlalchemy
 import requests
 
 
@@ -47,7 +48,19 @@ def getIngredients():
 def main():
     # getDrinks()
     # getGlasses()
-    getIngredients()
+    # getIngredients()
+    
+    with open('seed_files/glasses.txt', 'r') as file:
+        glasses = file.readlines()
+        
+    glasses = [glass.replace('\n', '').strip() for glass in glasses]
+        
+    for glass in glasses:
+        print(f'{glass}')
+    
+    # for ingredient in ingredients:
+        # print(ingredient)
+        
     
 if __name__ == "__main__":
     main()
