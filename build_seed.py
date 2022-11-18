@@ -1,5 +1,6 @@
 # Save contents of API to text files to build certain tables
-from models import Glass, connect_db, db
+from models import Drink, Glass, connect_db, db
+from app import app
 import sqlalchemy
 import requests
 
@@ -55,11 +56,26 @@ def main():
         
     glasses = [glass.replace('\n', '').strip() for glass in glasses]
         
-    for glass in glasses:
-        print(f'{glass}')
+    # for glass in glasses:
+    #     print(f'{glass}')
     
     # for ingredient in ingredients:
         # print(ingredient)
+        
+    drinks = Drink.getAll()
+    url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+    
+    for drink in drinks:
+        if ' ' in drink.name:
+            name = drink.name.replace(' ', '+')
+        else:
+            name = drink.name
+        
+        drink.url = f'{url}{name}'
+        db.session.add(drink)
+        db.session.commit()
+    
+    
         
     
 if __name__ == "__main__":
