@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+import requests
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -17,7 +18,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.Text, nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
-    email = db.Column(db.Text, nullable=False)
+    email = db.Column(db.Text, nullable=False, unique=True)
     
     # Registration and authentication related methods
     
@@ -89,7 +90,7 @@ class User(db.Model):
 
  
 class CustomDrink(db.Model):
-    """Class modeling a drink"""
+    """Class modeling a custom drink uploaded by a user"""
     
     __tablename__ = "custom_drinks"
     
@@ -105,8 +106,10 @@ class CustomDrink(db.Model):
                                                   ondelete='CASCADE',
                                                   onupdate='CASCADE'))
     
-    user = db.relationship('User', backref='drinks')
-    glass = db.relationship('Glass', backref='drink')
+    user = db.relationship('User', backref='custom_drinks')
+    glass = db.relationship('Glass', backref='custom_drink')
+    ingredient = db.relationship('Ingredient', backref='custom_drinks', secondary='drink_ingredients')
+    drink_ingredient = db.relationship('DrinkIngredient', backref='custom_drinks')
     
     @classmethod
     def add(cls, drinkData, userId):
@@ -199,7 +202,7 @@ class Ingredient(db.Model):
         newIngredient = Ingredient(name=name, description=description, type=type)
         
     def __repr__(self):
-        repr = f"<Ingredient name={self.name} type={self.type} isAlcoholic={self.isAlcoholic}>"
+        repr = f"<Ingredient name={self.name}>"
         return repr
     
 
@@ -253,7 +256,7 @@ class Comment(db.Model):
     @classmethod
     def getByDrink(cls, drink):
         """Return all comments made on a drink"""
-        drink = CustomDrink.getByName(name)
+        drink = CustomDrink.getByName(drink)
     
     # Dunders
     
@@ -268,6 +271,7 @@ class UserIngredients(db.Model):
     ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
                                                         ondelete='CASCADE',
                                                         onupdate='CASCADE'))
+   
     
 class Drink(db.Model):
     """Table to hold names of drinks and links to API"""
@@ -275,4 +279,21 @@ class Drink(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
-    url = db.Column(db.Text, nullable=False)
+    url = db.Column(db.Text, nullable=True)
+    
+    
+    def __repr__(self):
+        return f'<Drink name={self.name}>'
+    
+    
+    @classmethod
+    def get(cls, drinkName):
+        """Fetch a drink by its name"""
+        drinkName = drinkName.title()
+        return cls.query.filter_by(name=drinkName).first()
+        
+        
+    @classmethod
+    def getAll(cls):
+        """Retrieve all drinks"""
+        return cls.query.all()
