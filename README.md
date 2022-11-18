@@ -94,6 +94,33 @@ The API will be used to retrieve information on the drinks, and the database wil
     - [ ] add
     - [ ] edit
     - [ ] delete
+  
+#### Relationships
+
+- [ ] Users
+  - [x] Custom drinks
+  - [ ] User ingredients (join table)
+  - [ ] Comments
+- [x] Custom Drinks
+  - [x] Users
+  - [x] Glasses
+  - [x] Ingredient Amounts (join table)
+- [x] Glasses
+  - [x] Custom Drinks
+- [ ] Ingredients
+  - [ ] User ingredients (join table)
+  - [ ] Ingredient amounts (join table)
+- [ ] Drink Ingredients
+  - [ ] Ingredients
+  - [ ] Custom drinks
+- [ ] Comments
+  - [ ] Users
+  - [ ] Drinks
+- [ ] User Ingredients
+  - [ ] Users
+  - [ ] Ingredients
+- [ ] Drinks
+  - [ ] Comments
 
 #### Pages
 
@@ -151,3 +178,16 @@ amt
 ```bash
 pg_dump -U matt drinkr > drinkr.pgsql
 ```
+
+### 
+
+- What will features be?
+  - This will come from business requirements docs
+  - Make sure you have that taken care of so you can fulfill them
+- After getting requirements from business end, build app (or at least simulate getting requirements)
+- Make sure you focus on the design side (as well as the OOP in both front and back-end)
+- Document any challenges you're facing and how you overcome them
+  - This will likely come up in interviews!
+- Add modal to ensure users are at least 21 before they can access the content
+  - Use session to hold their age
+- Make sure that a user can only create one account per email address
