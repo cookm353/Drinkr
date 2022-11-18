@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, abort, request, g, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, User, CustomDrink
+from models import connect_db, User, CustomDrink, Drink, Glass, Ingredient
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ CURR_USER_KEY = 'curr_user'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinkr'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = 'bottoms_up'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
@@ -79,7 +79,9 @@ def login():
     
 @app.route('/logout')
 def logout():
-    ...
+    do_logout()
+    
+    return redirect('/')
 
 # General routes
 
@@ -98,6 +100,8 @@ def user_page(userId):
 def show_drinks():
     ...
     
-@app.route('/drinks/<str:drinkName>')
+@app.route('/drinks/<string:drinkName>')
 def show_drink(drinkName):
-    drink = CustomDrink.getByName(drinkName)
+    drink = Drink.get(drinkName)
+    
+    return render_template('drinks/drink_detail.html', drink=drink)
