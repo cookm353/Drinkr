@@ -1,5 +1,5 @@
 from app import app
-from models import db, User, Glass, CustomDrink, Ingredient, Drink, DrinkIngredient
+from models import db, User, Glass, Ingredient, Drink
 import requests
 
 def addUsers():
@@ -49,7 +49,9 @@ def addDrinks():
     drinks = [drink.replace('\n', '').strip() for drink in drinks]
         
     for drink in drinks:
-        newDrink = Drink(name=drink)
+        baseURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+        drinkURL = f"{baseURL}{drink.replace(' ', '+')}"
+        newDrink = Drink(name=drink, url=drinkURL)
         db.session.add(newDrink)
     
 
@@ -59,7 +61,7 @@ def main():
     db.create_all()
     
     addUsers()
-    addGlasses()
+    # addGlasses()
     addIngredients()
     addDrinks()
     
