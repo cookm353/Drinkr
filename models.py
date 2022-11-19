@@ -20,6 +20,8 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False, unique=True)
     
+    ingredients = db.relationship('Ingredient', backref='user', secondary='user_ingredients')
+    
     # Registration and authentication related methods
     
     @classmethod
@@ -87,8 +89,127 @@ class User(db.Model):
     
     def __str__(self):
         return "Username:\t{self.username}\nEmail:\t{self.email}"
+          
+    
+class Ingredient(db.Model):
+    """Class representing an ingredient"""
+    
+    __tablename__ = 'ingredients'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    
+    @classmethod
+    def get(cls, id: int):
+        """Return an ingredient"""
+        return Ingredient.query.get_or_404(id)
+    
+    @classmethod
+    def getByName(cls, name: str):
+        """Return an ingredient using its name"""
+        name = name.title()
+        return Ingredient.query.filter_by(name=name).first()
+    
+    @classmethod
+    def getAll(cls):
+        """Return all ingredients"""
+        return Ingredient.query.all()
+    
+    @classmethod
+    def add(cls, ingredientData: dict):
+        """Add a new ingredient"""
+        name = ingredientData.get('name')
+        description = ingredientData.get('description', '')
+        type = ingredientData.get('type', '')
+        
+        newIngredient = Ingredient(name=name, description=description, type=type)
+        
+    def __repr__(self):
+        repr = f"<Ingredient name={self.name}>"
+        return repr
+    
 
- 
+class Comment(db.Model):
+    """Class modeling comments left by users"""
+    __tablename__ = 'comments'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.Text, nullable=False)
+    ratming = db.Column(db.Integer, default=0)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id',
+                                                 ondelete='CASCADE',
+                                                 onupdate='CASCADE'))
+    drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
+                                                 ondelete='CASCADE',
+                                                 onupdate='CASCADE'))
+    
+    user = db.relationship('User', backref='comment')
+    drink = db.relationship('Drink', backref='comment')
+    
+    
+    # Utility methods
+    
+    @classmethod
+    def get(cls, id):
+        return cls.query.get_or_404(id)
+    
+    @classmethod
+    def getAll(cls):
+        return cls.query.all()
+    
+    @classmethod
+    def getByUser(cls, username):
+        """Return all comments a user has made"""
+        user = User.getByUsername(username)
+        
+        return cls.query.filter_by(user_id=user.id).all()
+    
+    @classmethod
+    def getByDrink(cls, drink):
+        """Return all comments made on a drink"""
+        drink = Drink.getByName(drink)
+    
+    # Dunders
+    
+class User_Ingredients(db.Model):
+    """Join table for ingredients a user has"""
+    __tablename__ = 'user_ingredients'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', 
+                                                  ondelete='CASCADE',
+                                                  onupdate='CASCADE'))
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
+                                                        ondelete='CASCADE',
+                                                        onupdate='CASCADE'))
+   
+    
+class Drink(db.Model):
+    """Table to hold names of drinks and links to API"""
+    __tablename__ = 'drinks'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    url = db.Column(db.Text, nullable=True)
+    
+    
+    def __repr__(self):
+        return f'<Drink name={self.name}>'
+    
+    
+    @classmethod
+    def get(cls, drinkName):
+        """Fetch a drink by its name"""
+        drinkName = drinkName.title()
+        return cls.query.filter_by(name=drinkName).first()
+        
+        
+    @classmethod
+    def getAll(cls):
+        """Retrieve all drinks"""
+        return cls.query.all()
+
+'''
 class CustomDrink(db.Model):
     """Class modeling a custom drink uploaded by a user"""
     
@@ -141,8 +262,9 @@ class CustomDrink(db.Model):
     def delete(cls, drinkId):
         """Delete a custom drink"""
         ...
-        
+'''
 
+'''
 class Glass(db.Model):
     """Class representing a glass type"""
     
@@ -166,46 +288,9 @@ class Glass(db.Model):
     
     def __repr__(self):
         return f'<Glass name={self.name}>'
-    
-    
-class Ingredient(db.Model):
-    """Class representing an ingredient"""
-    
-    __tablename__ = 'ingredients'
-    
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
-    
-    @classmethod
-    def get(cls, id: int):
-        """Return an ingredient"""
-        return Ingredient.query.get_or_404(id)
-    
-    @classmethod
-    def getByName(cls, name: str):
-        """Return an ingredient using its name"""
-        name = name.title()
-        return Ingredient.query.filter_by(name=name).first()
-    
-    @classmethod
-    def getAll(cls):
-        """Return all ingredients"""
-        return Ingredient.query.all()
-    
-    @classmethod
-    def add(cls, ingredientData: dict):
-        """Add a new ingredient"""
-        name = ingredientData.get('name')
-        description = ingredientData.get('description', '')
-        type = ingredientData.get('type', '')
-        
-        newIngredient = Ingredient(name=name, description=description, type=type)
-        
-    def __repr__(self):
-        repr = f"<Ingredient name={self.name}>"
-        return repr
-    
+'''
 
+'''                
 class DrinkIngredient(db.Model):
     """Join table between drinks and ingredients"""
     __tablename__ = 'drink_ingredients'
@@ -218,82 +303,5 @@ class DrinkIngredient(db.Model):
     drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
                                                    ondelete='CASCADE',
                                                    onupdate='CASCADE'))
-    
-    # insert relationships
-
-
-class Comment(db.Model):
-    """Class modeling comments left by users"""
-    __tablename__ = 'comments'
-    
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    content = db.Column(db.Text, nullable=False)
-    ranking = db.Column(db.Integer, default=0)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id',
-                                                 ondelete='CASCADE',
-                                                 onupdate='CASCADE'))
-    drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
-                                                 ondelete='CASCADE',
-                                                 onupdate='CASCADE'))
-    
-    # Utility methods
-    
-    @classmethod
-    def get(cls, id):
-        return cls.query.get_or_404(id)
-    
-    @classmethod
-    def getAll(cls):
-        return cls.query.all()
-    
-    @classmethod
-    def getByUser(cls, username):
-        """Return all comments a user has made"""
-        user = User.getByUsername(username)
-        
-        return cls.query.filter_by(user_id=user.id).all()
-    
-    @classmethod
-    def getByDrink(cls, drink):
-        """Return all comments made on a drink"""
-        drink = CustomDrink.getByName(drink)
-    
-    # Dunders
-    
-class UserIngredients(db.Model):
-    """Join table for ingredients a user has"""
-    __tablename__ = 'user_ingredients'
-    
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id', 
-                                                  ondelete='CASCADE',
-                                                  onupdate='CASCADE'))
-    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
-                                                        ondelete='CASCADE',
-                                                        onupdate='CASCADE'))
    
-    
-class Drink(db.Model):
-    """Table to hold names of drinks and links to API"""
-    __tablename__ = 'drinks'
-    
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
-    url = db.Column(db.Text, nullable=True)
-    
-    
-    def __repr__(self):
-        return f'<Drink name={self.name}>'
-    
-    
-    @classmethod
-    def get(cls, drinkName):
-        """Fetch a drink by its name"""
-        drinkName = drinkName.title()
-        return cls.query.filter_by(name=drinkName).first()
-        
-        
-    @classmethod
-    def getAll(cls):
-        """Retrieve all drinks"""
-        return cls.query.all()
+'''
