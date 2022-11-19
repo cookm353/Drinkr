@@ -97,30 +97,28 @@ The API will be used to retrieve information on the drinks, and the database wil
   
 #### Relationships
 
-- [ ] Users
-  - [x] Custom drinks
-  - [ ] User ingredients (join table)
-  - [ ] Comments
-- [x] Custom Drinks
+- [x] Users
+  - [x] User ingredients (join table)
+  - [x] Comments
+- [x] Comments
+  - [x] Users
+  - [x] Drinks
+- [x] User Ingredients (join table)
+  - [x] Users
+  - [x] Ingredients
+- [x] Drinks
+  - [x]m Comments
+- [x] Ingredients
+  - [x] User ingredients (join table)
+<!-- - [ ] Drink Ingredients
+  - [ ] Ingredients
+  - [ ] Custom drinks -->
+<!-- - [x] Custom Drinks
   - [x] Users
   - [x] Glasses
-  - [x] Ingredient Amounts (join table)
-- [x] Glasses
-  - [x] Custom Drinks
-- [ ] Ingredients
-  - [ ] User ingredients (join table)
-  - [ ] Ingredient amounts (join table)
-- [ ] Drink Ingredients
-  - [ ] Ingredients
-  - [ ] Custom drinks
-- [ ] Comments
-  - [ ] Users
-  - [ ] Drinks
-- [ ] User Ingredients
-  - [ ] Users
-  - [ ] Ingredients
-- [ ] Drinks
-  - [ ] Comments
+  - [x] Ingredient Amounts (join table) -->
+<!-- - [x] Glasses
+  - [x] Custom Drinks -->
 
 #### Pages
 
