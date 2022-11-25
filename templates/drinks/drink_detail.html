@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{drink.name}}{% endblock %}
+
+{% block content %}
+    {% for variant in drinkInfo %}
+        <ul>
+            {% for k, v in variant.items() %}
+                {% if k != 'imgURL' %}
+                <li>{{k}}: {{v}}</li>
+                {% else %}
+                <li><img src="{{v}}" alt="{{variant['name']}}"></li>
+                {% endif %}
+            {% endfor%}
+        </ul>
+    {% endfor %}
+{% endblock %}
