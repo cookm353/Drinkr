@@ -11,11 +11,6 @@ body {
 
 /* Navbar Styles */
 
-#logo {
-    height: 40px;
-
-}
-
 body > nav {
     background-color: black;
 }
@@ -29,7 +24,6 @@ body > nav {
 .navbar a:hover {
     text-decoration: none;
     color: plum
-    
 }
 
 .navbar ul {
