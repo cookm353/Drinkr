@@ -135,7 +135,7 @@ class Comment(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     content = db.Column(db.Text, nullable=False)
-    ratming = db.Column(db.Integer, default=0)
+    rating = db.Column(db.Integer, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id',
                                                  ondelete='CASCADE',
                                                  onupdate='CASCADE'))
@@ -209,6 +209,37 @@ class Drink(db.Model):
         """Retrieve all drinks"""
         return cls.query.all()
 
+    @staticmethod
+    def getJSON(url):
+        """Make API call and parse response"""
+        resp = requests.post(url)
+        json = resp.json()
+        return Drink.parseJSON(json)
+        
+    @staticmethod
+    def parseJSON(json):
+        drinks = json['drinks']
+        drinkInfo = []
+        
+        for drink in drinks:
+            variant = {}
+            variant['name'] = drink['strDrink']
+            variant['glass'] = drink['strGlass']
+            variant['instructions'] = drink['strInstructions']
+            variant['isAlcoholic'] = drink['strAlcoholic']
+            variant['imgURL'] = drink['strDrinkThumb'].replace('\/', '/')
+            
+            for k, v in drink.items():
+                if 'Ingredient' in k and v is not None and v != '':
+                    variant[f'ingredient{k[-1]}'] = v.title()
+                if 'Measure' in k and v is not None and v != '':
+                    variant[f'measure{k[-1]}'] = v
+            drinkInfo.append(variant)
+
+        # print(drinkInfo)
+        return drinkInfo
+
+    
 '''
 class CustomDrink(db.Model):
     """Class modeling a custom drink uploaded by a user"""
