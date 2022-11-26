@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = 'bottoms_up'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-debug = DebugToolbarExtension(app)
+# debug = DebugToolbarExtension(app)
 
 connect_db(app)
 
@@ -106,9 +106,10 @@ def show_drinks():
     
 @app.route('/drinks/<string:drinkName>')
 def show_drink(drinkName):
-    drink = Drink.get(drinkName)
+    drink = Drink.getByName(drinkName)
+    drinkInfo = Drink.getJSON(drink.url)
     
-    return render_template('drinks/drink_detail.html', drink=drink)
+    return render_template('drinks/drink_detail.html', drink=drink, drinkInfo=drinkInfo)
 
 # Ingredient 
 
@@ -121,5 +122,6 @@ def show_ingredients():
 @app.route('/ingredients/<string:ingredientName>')
 def show_ingredient(ingredientName):
     ingredient = Ingredient.get(ingredientName)
+    
     
     return render_template('drinks/ingredient_detail.html', ingredient=ingredient)
