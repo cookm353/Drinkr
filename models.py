@@ -113,7 +113,7 @@ class Ingredient(db.Model):
     @classmethod
     def getAll(cls):
         """Return all ingredients"""
-        return Ingredient.query.all()
+        return cls.query.order_by(cls.name)
     
     @classmethod
     def add(cls, ingredientData: dict):
