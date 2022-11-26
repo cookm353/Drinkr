@@ -191,6 +191,7 @@ class Drink(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
     url = db.Column(db.Text, nullable=True)
+    img_url = db.Column(db.Text, nullable=True)
     
     
     def __repr__(self):
@@ -198,7 +199,12 @@ class Drink(db.Model):
     
     
     @classmethod
-    def get(cls, drinkName):
+    def get(cls, id):
+        """Fetch a drink by its id"""
+        return cls.query.get_or_404(id)
+    
+    @classmethod
+    def getByName(cls, drinkName):
         """Fetch a drink by its name"""
         drinkName = drinkName.title()
         return cls.query.filter_by(name=drinkName).first()
@@ -295,7 +301,7 @@ class CustomDrink(db.Model):
         ...
 '''
 
-'''
+''
 class Glass(db.Model):
     """Class representing a glass type"""
     
@@ -319,7 +325,7 @@ class Glass(db.Model):
     
     def __repr__(self):
         return f'<Glass name={self.name}>'
-'''
+
 
 '''                
 class DrinkIngredient(db.Model):
