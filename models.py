@@ -197,7 +197,6 @@ class Drink(db.Model):
     def __repr__(self):
         return f'<Drink name={self.name}>'
     
-    
     @classmethod
     def get(cls, id):
         """Fetch a drink by its id"""
@@ -206,14 +205,13 @@ class Drink(db.Model):
     @classmethod
     def getByName(cls, drinkName):
         """Fetch a drink by its name"""
-        drinkName = drinkName.title()
+        # drinkName = drinkName.title()
         return cls.query.filter_by(name=drinkName).first()
-        
         
     @classmethod
     def getAll(cls):
         """Retrieve all drinks"""
-        return cls.query.all()
+        return cls.query.order_by(cls.name)
 
     @staticmethod
     def getJSON(url):
@@ -234,15 +232,23 @@ class Drink(db.Model):
             variant['instructions'] = drink['strInstructions']
             variant['isAlcoholic'] = drink['strAlcoholic']
             variant['imgURL'] = drink['strDrinkThumb'].replace('\/', '/')
+            variant['ingredients'] = []
+            
+            ingredients = []
+            measures = []
             
             for k, v in drink.items():
                 if 'Ingredient' in k and v is not None and v != '':
-                    variant[f'ingredient{k[-1]}'] = v.title()
-                if 'Measure' in k and v is not None and v != '':
-                    variant[f'measure{k[-1]}'] = v
+                    ingredients.append(v)
+                elif 'Measure' in k and v is not None and v != '':
+                    measures.append(v)
+
+            zipped = zip(measures, ingredients)
+            for m, i in zipped:
+                variant['ingredients'].append(f'{m} {i}'.replace('  ', ' '))
+            
             drinkInfo.append(variant)
 
-        # print(drinkInfo)
         return drinkInfo
 
     
