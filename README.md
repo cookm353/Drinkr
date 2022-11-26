@@ -124,7 +124,14 @@ The API will be used to retrieve information on the drinks, and the database wil
 
 - [ ] Index
   - Basic landing page
-  - 
+- Login form
+- Register form
+- User detail
+- Ingredient list
+- Drink pages
+  - Alphabetical list
+  - Drink by IBA category
+  - Search drinks
 
 Drinks
 ------
@@ -186,6 +193,13 @@ pg_dump -U matt drinkr > drinkr.pgsql
 - Make sure you focus on the design side (as well as the OOP in both front and back-end)
 - Document any challenges you're facing and how you overcome them
   - This will likely come up in interviews!
-- Add modal to ensure users are at least 21 before they can access the content
-  - Use session to hold their age
 - Make sure that a user can only create one account per email address
+- For drink display let users search or browse alphabetically
+
+
+### To-Do
+
+- Let users search drinks or browse alphabetically
+- Add links on drink detail page to ingredients that have a detail page
+
+### Reflections
