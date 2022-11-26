@@ -37,7 +37,7 @@ def addIngredients():
 
     
     for ingredient in ingredients:
-        newIngredient = Ingredient(name=ingredient)
+        newIngredient = Ingredient(name=ingredient.title())
         db.session.add(newIngredient)
 
 def addDrinks():
