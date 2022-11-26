@@ -3,15 +3,62 @@
 {% block title %}{{drink.name}}{% endblock %}
 
 {% block content %}
-    {% for variant in drinkInfo %}
-        <ul>
-            {% for k, v in variant.items() %}
-                {% if k != 'imgURL' %}
-                <li>{{k}}: {{v}}</li>
-                {% else %}
-                <li><img src="{{v}}" alt="{{variant['name']}}"></li>
-                {% endif %}
-            {% endfor%}
-        </ul>
-    {% endfor %}
+    <div class="container-fluid">
+        <div class="row py-4">
+            <div class="col-1 left-gutter"></div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-10">
+                        <h1 class="display-4">{{drinkInfo[0]['name']}}</h1>
+                    </div>
+                    <div class="col-2">
+                        <span><i class="fa-regular fa-star display-4 align-self-bottom"></i></span>
+                    </div>
+                </div>
+                <p>Recommended glass: {{ drinkInfo[0]['glass'].title() }}</p>
+                <span>Ingredients:</span>
+                <ul>
+                {% for ingredient in drinkInfo[0]['ingredients'] %}
+                <li>{{ ingredient }}</li>
+                {% endfor %}
+                </ul>
+                <p>Directions:</p>
+                <p>{{ drinkInfo[0]['instructions'] }}</p>
+            </div>
+            <div class="col-3">
+                <img src="{{ drinkInfo[0]['imgURL'] }}" 
+                    alt="{{ drinkInfo[0]['name'] }}" class="img-fluid">
+            </div>
+            <div class="col-1 right-gutter"></div>
+        </div>
+        <!-- {% for variant in drinkInfo %}
+            <div class="row py-4">
+                <div class="col-1 left-gutter"></div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-10">
+                            <h1 class="display-4">{{variant['name']}}</h1>
+                        </div>
+                        <div class="col-2">
+                            <span><i class="fa-regular fa-star display-4 align-self-bottom"></i></span>
+                        </div>
+                    </div>
+                    <p>Recommended glass: {{ variant['glass'].title() }}</p>
+                    <span>Ingredients:</span>
+                    <ul>
+                    {% for ingredient in variant['ingredients'] %}
+                    <li>{{ ingredient }}</li>
+                    {% endfor %}
+                    </ul>
+                    <p>Directions:</p>
+                    <p>{{variant['instructions']}}</p>
+                </div>
+                <div class="col-3">
+                    <img src="{{variant['imgURL']}}" 
+                        alt="{{variant['name']}}" class="img-fluid">
+                </div>
+                <div class="col-1 right-gutter"></div>
+            </div>
+        {% endfor %} -->
+    </div>
 {% endblock %}
