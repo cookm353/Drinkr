@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Cocktail Recipes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for drink in drinks %}
+        <div class="col-md-4 col-6 col-lg-3 py-2">
+            <div class="card">
+                <a href="/drinks/{{drink.name}}" class="btn">
+                    <img src="{{drink.img_url}}" alt="" class="img-fluid">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{drink.name}}</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
