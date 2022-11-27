@@ -1,6 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 import requests
+from flask_bcrypt import Bcrypt
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -192,6 +192,12 @@ class Drink(db.Model):
     name = db.Column(db.Text, nullable=False)
     url = db.Column(db.Text, nullable=True)
     img_url = db.Column(db.Text, nullable=True)
+
+    ingredients = db.relationship(
+        'Ingredient',
+        backref='drink',
+        secondary='drink_ingredients'
+    )
     
     
     def __repr__(self):
@@ -307,7 +313,7 @@ class CustomDrink(db.Model):
         ...
 '''
 
-''
+'''
 class Glass(db.Model):
     """Class representing a glass type"""
     
@@ -331,20 +337,16 @@ class Glass(db.Model):
     
     def __repr__(self):
         return f'<Glass name={self.name}>'
-
-
-'''                
+'''
+           
 class DrinkIngredient(db.Model):
     """Join table between drinks and ingredients"""
     __tablename__ = 'drink_ingredients'
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    amount = db.Column(db.Text, nullable=False)
     ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
                                                         ondelete='CASCADE',
                                                         onupdate='CASCADE'))
     drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
                                                    ondelete='CASCADE',
                                                    onupdate='CASCADE'))
-   
-'''
