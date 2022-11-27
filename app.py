@@ -121,7 +121,7 @@ def show_ingredients():
     
 @app.route('/ingredients/<string:ingredientName>')
 def show_ingredient(ingredientName):
-    ingredient = Ingredient.get(ingredientName)
+    ingredient = Ingredient.getByName(ingredientName)
     
     
     return render_template('drinks/ingredient_detail.html', ingredient=ingredient)
