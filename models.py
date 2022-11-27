@@ -99,6 +99,12 @@ class Ingredient(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
     
+    drinks = db.relationship(
+        'Drink',
+        backref='ingredients',
+        secondary='drink_ingredients'
+    )
+    
     @classmethod
     def get(cls, id: int):
         """Return an ingredient"""
@@ -114,15 +120,6 @@ class Ingredient(db.Model):
     def getAll(cls):
         """Return all ingredients"""
         return cls.query.order_by(cls.name)
-    
-    @classmethod
-    def add(cls, ingredientData: dict):
-        """Add a new ingredient"""
-        name = ingredientData.get('name')
-        description = ingredientData.get('description', '')
-        type = ingredientData.get('type', '')
-        
-        newIngredient = Ingredient(name=name, description=description, type=type)
         
     def __repr__(self):
         repr = f"<Ingredient name={self.name}>"
@@ -192,13 +189,6 @@ class Drink(db.Model):
     name = db.Column(db.Text, nullable=False)
     url = db.Column(db.Text, nullable=True)
     img_url = db.Column(db.Text, nullable=True)
-
-    ingredients = db.relationship(
-        'Ingredient',
-        backref='drink',
-        secondary='drink_ingredients'
-    )
-    
     
     def __repr__(self):
         return f'<Drink name={self.name}>'
@@ -228,6 +218,7 @@ class Drink(db.Model):
         
     @staticmethod
     def parseJSON(json):
+        """Parse JSON into dictionary with relevant data"""
         drinks = json['drinks']
         drinkInfo = []
         
@@ -239,23 +230,30 @@ class Drink(db.Model):
             variant['isAlcoholic'] = drink['strAlcoholic']
             variant['imgURL'] = drink['strDrinkThumb'].replace('\/', '/')
             variant['ingredients'] = []
+            variant['measures'] = []
             
             ingredients = []
             measures = []
             
             for k, v in drink.items():
-                if 'Ingredient' in k and v is not None and v != '':
+                if 'Ingredient' in k and v is not None:
                     ingredients.append(v)
-                elif 'Measure' in k and v is not None and v != '':
+                    variant['ingredients'].append(v)
+                elif 'Measure' in k and v is not None:
                     measures.append(v)
-
-            zipped = zip(measures, ingredients)
-            for m, i in zipped:
-                variant['ingredients'].append(f'{m} {i}'.replace('  ', ' '))
+                    variant['measures'].append(v)
             
             drinkInfo.append(variant)
 
         return drinkInfo
+    
+    def getIngredients(self) -> list:
+        """Return list of ingredient names stored in DB"""
+        drinkIngredients = self.ingredients
+        
+        return [ingredient.name for ingredient in self.ingredients]
+
+        
 
     
 '''
