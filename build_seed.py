@@ -75,8 +75,6 @@ def main():
         db.session.add(drink)
         db.session.commit()
     
-    
-        
-    
+
 if __name__ == "__main__":
     main()
