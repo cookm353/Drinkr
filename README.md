@@ -200,6 +200,6 @@ pg_dump -U matt drinkr > drinkr.pgsql
 ### To-Do
 
 - Let users search drinks or browse alphabetically
-- Add links on drink detail page to ingredients that have a detail page
+
 
 ### Reflections
