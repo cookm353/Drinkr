@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{drink.name}}{% endblock %}
+{% block title %}{{drinkInfo[0].name}}{% endblock %}
 
 {% block content %}
     <div class="container-fluid">
@@ -19,18 +19,24 @@
                 <span>Ingredients:</span>
                 <ul>
                 {% for ingredient in drinkInfo[0]['ingredients'] %}
-                <li>{{ ingredient }}</li>
+                    {% if ingredient in ingredients %}
+                    <li>{{ drinkInfo[0]['measures'][loop.index - 1] }} <a href='/ingredients/{{ingredient.replace(" ", "%20")}}'>{{ ingredient.title() }}</a></li>
+                    {% else %}
+                    <li>{{ drinkInfo[0]['measures'][loop.index - 1] }} {{ ingredient.title() }}</li>
+                    {% endif %}
                 {% endfor %}
                 </ul>
                 <p>Directions:</p>
                 <p>{{ drinkInfo[0]['instructions'] }}</p>
             </div>
+
             <div class="col-3">
                 <img src="{{ drinkInfo[0]['imgURL'] }}" 
                     alt="{{ drinkInfo[0]['name'] }}" class="img-fluid">
             </div>
             <div class="col-1 right-gutter"></div>
         </div>
+        <!-- Drink variants -->
         <!-- {% for variant in drinkInfo %}
             <div class="row py-4">
                 <div class="col-1 left-gutter"></div>
