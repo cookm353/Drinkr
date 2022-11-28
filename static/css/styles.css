@@ -53,3 +53,17 @@ body > nav {
 
 /* Form Styles */
 
+
+
+/* Detail Page Styles */
+
+.ingredient-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.ingredient-link:hover {
+    color: rgb(103, 49, 71);
+    transition: color 0.5s;
+}
