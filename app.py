@@ -89,7 +89,7 @@ def logout():
 def index():
     return render_template('index.html')
 
-# User related routes
+# User-related routes
 
 @app.route('/user/<int:userId>')
 def user_page(userId):
@@ -97,7 +97,7 @@ def user_page(userId):
     
     return render_template('/users/user_detail.html', user=user)
     
-# Drink related routes
+# Drink-related routes
 
 @app.route('/drinks')
 def show_drinks():
@@ -111,11 +111,11 @@ def show_drink(drinkName):
     """Drink detail page"""
     drink = Drink.getByName(drinkName)
     drinkInfo = Drink.getJSON(drink.url)
-    ingredients = drink.getIngredients()
+    ingredients = drink.ingredientsList
     
     return render_template('drinks/drink_detail.html', drinkInfo=drinkInfo, ingredients=ingredients)
 
-# Ingredient 
+# Ingredient-related routes
 
 @app.route('/ingredients')
 def show_ingredients():
@@ -128,6 +128,6 @@ def show_ingredients():
 def show_ingredient(ingredientName):
     """Ingredient detail list"""
     ingredient = Ingredient.getByName(ingredientName)
+    drinks = ingredient.drinksList
     
-    
-    return render_template('drinks/ingredient_detail.html', ingredient=ingredient)
+    return render_template('drinks/ingredient_detail.html', ingredient=ingredient, drinks=drinks)
