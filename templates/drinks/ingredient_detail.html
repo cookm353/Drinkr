@@ -16,4 +16,13 @@
         <div class="col-1 right-gutter"></div>
     </div>
 </div>
+
+<ul>
+{% for drink in drinks %}
+    <li>
+        <a href="/drinks/{{drink.replace(' ', '%20')}}">{{drink}}</a>
+    </li>
+{% endfor %}
+</ul>
+
 {% endblock %}
