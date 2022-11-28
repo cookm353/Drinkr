@@ -125,6 +125,11 @@ class Ingredient(db.Model):
         repr = f"<Ingredient name={self.name}>"
         return repr
     
+    @property
+    def drinksList(self) -> list:
+        """Return drinks that can be made with this ingredient"""
+        return [drink.name for drink in self.drinks]
+    
 
 class Comment(db.Model):
     """Class modeling comments left by users"""
@@ -247,11 +252,12 @@ class Drink(db.Model):
 
         return drinkInfo
     
-    def getIngredients(self) -> list:
+    @property
+    def ingredientsList(self) -> list:
         """Return list of ingredient names stored in DB"""
         drinkIngredients = self.ingredients
         
-        return [ingredient.name for ingredient in self.ingredients]
+        return [ingredient.name for ingredient in drinkIngredients]
 
         
 
