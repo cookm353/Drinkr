@@ -20,7 +20,7 @@
                 <ul>
                 {% for ingredient in drinkInfo[0]['ingredients'] %}
                     {% if ingredient in ingredients %}
-                    <li>{{ drinkInfo[0]['measures'][loop.index - 1] }} <a href='/ingredients/{{ingredient.replace(" ", "%20")}}'>{{ ingredient.title() }}</a></li>
+                    <li>{{ drinkInfo[0]['measures'][loop.index - 1] }} <a href='/ingredients/{{ingredient.replace(" ", "%20")}}' class="ingredient-link">{{ ingredient.title() }}</a></li>
                     {% else %}
                     <li>{{ drinkInfo[0]['measures'][loop.index - 1] }} {{ ingredient.title() }}</li>
                     {% endif %}
