@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}My Liquor Cabinet{% endblock %}
+
+{% block content %}
+<div id="accordion">
+    <!-- Bottles -->
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            My Bottles
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="container">
+            <div class="row justify-content-between">
+                {% for ingredient in userIngredients %}
+                    <div class="card-deck col-6 col-md-4 col-lg-3 py-2">
+                      <div class="card">
+                        <a href="/ingredients/{{ingredient.name.lower().replace(' ', '%20')}}">
+                          <img src="https://www.thecocktaildb.com/images/ingredients/{{ingredient.name.replace(' ', '%20')}}.png" alt="" class="img-fluid">
+                          <div class="card-body">
+                            <h3 class="card-title text-center">{{ ingredient.name }}</h3>
+                          </div>
+                            <a href="#" class="btn remove-bottle" >Remove</a>
+                          </a>
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add bottles form -->
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Add a Bottle
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+            <div class="container col-4">
+                <form action="/user/{{g.user.id}}/cabinet" method="POST" id="addBottleForm">
+                    <div class="form-group">
+                        <label for="ingredientList">Select a bottle to add:</label>
+                        <select name="ingredientList" id="ingredientList" class="form-control">
+                            {% for ingredient in ingredients %}
+                            <option value="{{ingredient.id}}">{{ ingredient.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="btn" id="addIngredient">Add!</button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Drinks that can be made from what's in cabinet -->
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Available Drinks
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body">
+          <ul>
+            {% for drinkList in drinks %}
+            {% for drink in drinkList %}
+            <div class="col-md-4 col-6 col-lg-3 py-2">
+              <div class="card">
+                  <a href="/drinks/{{drink.name}}" class="btn">
+                      <img src="{{drink.img_url}}" alt="" class="img-fluid">
+                      <div class="card-body">
+                          <h4 class="card-title text-center">{{drink.name}}</h4>
+                      </div>
+                  </a>
+              </div>
+          </div>
+            {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
