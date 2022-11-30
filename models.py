@@ -173,8 +173,8 @@ class Comment(db.Model):
     
     # Dunders
     
-class User_Ingredients(db.Model):
-    """Join table for ingredients a user has"""
+class UserIngredients(db.Model):
+    """Table storing ingredients a user's ingredients"""
     __tablename__ = 'user_ingredients'
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -184,6 +184,25 @@ class User_Ingredients(db.Model):
     ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id',
                                                         ondelete='CASCADE',
                                                         onupdate='CASCADE'))
+    
+    @classmethod
+    def addIngredient(cls, user_id, ingredient_id):
+        """Add an ingredient to the user's cabinet"""
+        if UserIngredients.checkForIngredient(user_id, ingredient_id) < 1:
+            new_bottle = UserIngredients(user_id=user_id, ingredient_id=ingredient_id)
+            db.session.add(new_bottle)
+            db.session.commit()
+        
+    @classmethod
+    def checkForIngredient(cls, user_id, ingredient_id):
+        """Check if a user already has an ingredient in their cabinet"""
+        return UserIngredients.query.filter_by(user_id=user_id, ingredient_id=ingredient_id).count()
+        
+    @classmethod
+    def removeIngredient(cls, user_id, ingredient_id):
+        """Remove an ingredient from the user's cabinet"""
+        UserIngredients.query.filter_by(user_id=user_id, ingredient_id=ingredient_id).delete()
+        db.session.commit()
    
     
 class Drink(db.Model):
