@@ -199,7 +199,19 @@ pg_dump -U matt drinkr > drinkr.pgsql
 
 ### To-Do
 
-- Let users search drinks or browse alphabetically
+- [ ] Flesh out user page and features
+  - [x] Finish implementing user ingredients model
+  - [ ] Let users add ingredients
+    - [ ] Add them on ingredient page
+    - [x] Add form to let users select an ingredient to add
+  - [ ] User's ingredients page
+    - [x] Add accordions for displaying items
+      - [x] Ingredient cards
+        - [ ] Let user remove ingredients from this
+      - [x] Cards of drinks user can make
+  - [ ] Let users add drinks to favorites
 
+### Reflections and Takeaways
 
-### Reflections
+- Not every needs to be secured against CSRF
+- Taking some time to create a plan of action helps 
