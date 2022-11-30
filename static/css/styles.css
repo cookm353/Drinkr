@@ -9,9 +9,13 @@ body {
     background-color: gray;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Navbar Styles */
 
-body > nav {
+nav, .dropdown-menu {
     background-color: black;
 }
 
@@ -34,6 +38,10 @@ body > nav {
 
 .navbar li {
     padding: 7px;
+}
+
+.dropdown-menu a:hover {
+    background-color: black;
 }
 
 /* Body Styles */
@@ -66,4 +74,14 @@ body > nav {
 .ingredient-link:hover {
     color: rgb(103, 49, 71);
     transition: color 0.5s;
+}
+
+/* Accordion Styles */
+
+
+
+/* BootStrap Overrides */
+
+.bg-dark {
+    background: black;
 }
