@@ -17,7 +17,7 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
           <div class="container">
-            <div class="row justify-content-between">
+            <div class="row justify-content-around">
                 {% for ingredient in userIngredients %}
                     <div class="card-deck col-6 col-md-4 col-lg-3 py-2">
                       <div class="card">
@@ -26,8 +26,10 @@
                           <div class="card-body">
                             <h3 class="card-title text-center">{{ ingredient.name }}</h3>
                           </div>
-                            <a href="#" class="btn remove-bottle" >Remove</a>
+                          <div class="btn card-footer">
+                            <a href="#" class="align-bottom remove-bottle" >Remove</a>
                           </a>
+                        </div>
                         </div>
                     </div>
                     
@@ -76,6 +78,7 @@
       <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
         <div class="card-body">
           <ul>
+            <div class="row">
             {% for drinkList in drinks %}
             {% for drink in drinkList %}
             <div class="col-md-4 col-6 col-lg-3 py-2">
@@ -87,9 +90,10 @@
                       </div>
                   </a>
               </div>
-          </div>
+            </div>
             {% endfor %}
             {% endfor %}
+            </div>
           </ul>
         </div>
       </div>
