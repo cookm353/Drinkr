@@ -99,7 +99,7 @@ def user_page(userId):
 
 @app.route('/user/<int:userId>/cabinet')
 def show_cabinet(userId):
-    """Show a user's cabinet and add bottles"""
+    """Show a user's cabinet"""
     if not g.user:
         flash("Access unauthorized")
         return redirect('/')
@@ -108,7 +108,7 @@ def show_cabinet(userId):
     
     formIngredients = Ingredient.getAll()
     userIngredients = g.user.ingredients
-    drinks = [ingredient.drinksList for ingredient in userIngredients]
+    drinks = [ingredient.drinks for ingredient in userIngredients]
     
     return render_template(f'/users/cabinet.html', ingredients=formIngredients, userIngredients=userIngredients, drinks=drinks)
     
@@ -122,7 +122,7 @@ def add_bottle(userId):
     elif g.user.id != userId:
         return redirect(f'/user/{g.user.id}/cabinet')
     
-    ingredientId = request.form.get('ingredientList')
+    ingredientId = request.json.get('ingredientList')
     UserIngredients.addIngredient(g.user.id, ingredientId)
         
     return redirect(f'/user/{g.user.id}/cabinet')
