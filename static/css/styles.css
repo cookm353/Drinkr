@@ -5,7 +5,8 @@ html {
     position: relative;
 }
 
-body {
+/* body { */
+#main-div {
     background-color: gray;
 }
 
