@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, abort, request, g, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, User, Drink, Ingredient, DrinkIngredient
+from models import connect_db, User, Drink, Ingredient, DrinkIngredient, UserIngredients
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -96,6 +96,57 @@ def user_page(userId):
     user = User.get(userId)
     
     return render_template('/users/user_detail.html', user=user)
+
+@app.route('/user/<int:userId>/cabinet')
+def show_cabinet(userId):
+    """Show a user's cabinet and add bottles"""
+    if not g.user:
+        flash("Access unauthorized")
+        return redirect('/')
+    elif g.user.id != userId:
+        return redirect(f'/user/{g.user.id}/cabinet')
+    
+    formIngredients = Ingredient.getAll()
+    userIngredients = g.user.ingredients
+    drinks = [ingredient.drinksList for ingredient in userIngredients]
+    
+    return render_template(f'/users/cabinet.html', ingredients=formIngredients, userIngredients=userIngredients, drinks=drinks)
+    
+
+@app.route('/user/<int:userId>/cabinet', methods=['POST'])
+def add_bottle(userId):
+    """Add a bottle to the user's cabinet"""
+    if not g.user:
+        flash("Access unauthorized")
+        return redirect('/')
+    elif g.user.id != userId:
+        return redirect(f'/user/{g.user.id}/cabinet')
+    
+    ingredientId = request.form.get('ingredientList')
+    UserIngredients.addIngredient(g.user.id, ingredientId)
+        
+    return redirect(f'/user/{g.user.id}/cabinet')
+
+@app.route('/user/<int:userId>/cabinet', methods=['DELETE'])
+def remove_bottle(userId):
+    """Remove a bottle from the user's cabinet"""
+    if not g.user:
+        flash("Access unauthorized")
+        return redirect('/')
+    elif g.user.id != userId:
+        return redirect(f'/user/{g.user.id}/cabinet')
+    
+    ingredientId = request.form.get('ingredientList')
+    UserIngredients.removeIngredient(g.user.id, ingredientId)
+    
+    return redirect(f'/user/{g.user.id}/cabinet')
+    
+
+@app.route('/user/<int:uderId>/comments')
+def user_comments(userId):
+    user = User.get(userId)
+    
+    return render_template('/users/comments.html', user=user)
     
 # Drink-related routes
 
