@@ -1,6 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, PasswordField
 from wtforms.validators import InputRequired, Email, Length
+from wtforms_sqlalchemy.fields import QuerySelectField
+
+from models import db, Ingredient
 
 class RegistrationForm(FlaskForm):
     """Form for registering"""
@@ -17,4 +20,3 @@ class LoginForm(FlaskForm):
                            validators=[InputRequired(message='This field is required.')])
     password = PasswordField('Password: ',
                              validators=[InputRequired(message='This field is required.')])
-    
