@@ -20,19 +20,17 @@
             <div class="row justify-content-around">
                 {% for ingredient in userIngredients %}
                     <div class="card-deck col-6 col-md-4 col-lg-3 py-2">
-                      <div class="card">
+                      <div class="card ingredient-card">
                         <a href="/ingredients/{{ingredient.name.lower().replace(' ', '%20')}}">
                           <img src="https://www.thecocktaildb.com/images/ingredients/{{ingredient.name.replace(' ', '%20')}}.png" alt="" class="img-fluid">
                           <div class="card-body">
                             <h3 class="card-title text-center">{{ ingredient.name }}</h3>
                           </div>
                           <div class="btn card-footer">
-                            <a href="#" class="align-bottom remove-bottle" >Remove</a>
-                          </a>
+                            <a href="" class="align-bottom remove-bottle" id="bottle{{ingredient.id}}">Remove</a>
                         </div>
-                        </div>
+                      </div>
                     </div>
-                    
                 {% endfor %}
             </div>
           </div>
