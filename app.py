@@ -122,12 +122,12 @@ def add_bottle(userId):
     elif g.user.id != userId:
         return redirect(f'/user/{g.user.id}/cabinet')
     
-    ingredientId = request.json.get('ingredientList')
-    UserIngredients.addIngredient(g.user.id, ingredientId)
+    ingredientID = request.json.get('ingredientID')
+    UserIngredients.addIngredient(g.user.id, ingredientID)
         
     return redirect(f'/user/{g.user.id}/cabinet')
 
-@app.route('/user/<int:userId>/cabinet', methods=['DELETE'])
+@app.route('/user/<int:userId>/cabinet/delete', methods=['POST'])
 def remove_bottle(userId):
     """Remove a bottle from the user's cabinet"""
     if not g.user:
@@ -136,8 +136,9 @@ def remove_bottle(userId):
     elif g.user.id != userId:
         return redirect(f'/user/{g.user.id}/cabinet')
     
-    ingredientId = request.form.get('ingredientList')
-    UserIngredients.removeIngredient(g.user.id, ingredientId)
+    ingredientID = request.json.get('ingredientID')
+    print(g.user.id, ingredientID)
+    UserIngredients.removeIngredient(g.user.id, ingredientID)
     
     return redirect(f'/user/{g.user.id}/cabinet')
     
