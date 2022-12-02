@@ -200,17 +200,17 @@ pg_dump -U matt drinkr > drinkr.pgsql
 ### To-Do
 
 - [ ] Flesh out user page and features
-  - [x] Finish implementing user ingredients model
-  - [ ] Let users add ingredients
-    - [ ] Add them on ingredient page
-    - [x] Add form to let users select an ingredient to add
-  - [ ] User's ingredients page
-    - [x] Add accordions for displaying items
-      - [x] Ingredient cards
-        - [ ] Let user remove ingredients from this
-      - [x] Cards of drinks user can make
+- [x] Finish implementing user ingredients model
+- [ ] Let users add ingredients
+  - [ ] Add them on ingredient page
+  - [x] Add form to let users select an ingredient to add
+- [x] User's ingredients page
+  - [x] Add accordions for displaying items
+    - [x] Ingredient cards
+      - [x] Let user remove ingredients
+    - [x] Cards of drinks user can make
   - [ ] Let users add drinks to favorites
-  - [ ] Learn how to implement classes in TS
+- [x] Learn how to implement classes in TS
 
 ### Reflections and Takeaways
 
