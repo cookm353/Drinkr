@@ -1,25 +1,30 @@
-const $addIngredientBttn = $("#addIngredient")
-const $ingredientToAdd = $('#ingredientList')
+// const $addIngredientBttn = $("#addIngredient")
+// const $ingredientToAdd = $('#ingredientList')
 
-async function addBottle() {
-    // Handle adding a bottle to a user's cabinet
-    const pageURL: string = window.location.href
-    const index: number = pageURL.search('/cab') - 1
-    const userId: string = pageURL[index]
-    const URL: string = `/user/${userId}/cabinet`
-    const data: object = {
-        ingredientList: $ingredientToAdd.val()
-    }
+// async function addBottle() {
+//     // Handle adding a bottle to a user's cabinet
+//     const pageURL: string = window.location.href
+//     const index: number = pageURL.search('/cab') - 1
+//     const userId: string = pageURL[index]
+//     const URL: string = `/user/${userId}/cabinet`
+//     const data: object = {
+//         ingredientID: $ingredientToAdd.val()
+//     }
 
-    console.log(data)
-    // console.log(data)
-    const resp = await axios.post(URL, {ingredientList: $ingredientToAdd.val()})
-    console.log(resp)
-}
+//     const resp = await axios.post(URL, {ingredientList: $ingredientToAdd.val()})
+// }
 
-$addIngredientBttn.click(evt => {
-    evt.preventDefault();
-    addBottle();
+const cabinet = new Cabinet();
+
+// Handle adding a bottle to the cabinet
+$("#addIngredient").click(evt => {
+    evt.preventDefault()
+    cabinet.addBottle()
 })
 
-// ingredientList: 98
+// Handle removing a bottle from the cabinet
+$('.ingredient-card').on('click', '.remove-bottle', evt => {
+    evt.preventDefault()
+    const id: string = evt.target.getAttribute('id').slice(6)
+    cabinet.removeBottle(id)
+})
