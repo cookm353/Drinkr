@@ -210,6 +210,7 @@ pg_dump -U matt drinkr > drinkr.pgsql
         - [ ] Let user remove ingredients from this
       - [x] Cards of drinks user can make
   - [ ] Let users add drinks to favorites
+  - [ ] Learn how to implement classes in TS
 
 ### Reflections and Takeaways
 
