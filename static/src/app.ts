@@ -19,7 +19,8 @@ const cabinet = new Cabinet();
 // Handle adding a bottle to the cabinet
 $("#addIngredient").click(evt => {
     evt.preventDefault()
-    cabinet.addBottle()
+    const ingredientID: number | string = $('#ingredientList').val()
+    cabinet.addBottle(ingredientID)
 })
 
 // Handle removing a bottle from the cabinet

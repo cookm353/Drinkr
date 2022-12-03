@@ -18,10 +18,10 @@ class Cabinet {
         return(`/user/${userId}/cabinet`);
     }
 
-    async addBottle() {
+    async addBottle(ingredientID) {
     // Handle adding a bottle to a user's cabinet
         const data: cabinetJSON = {
-            ingredientID: $ingredientToAdd.val()
+            ingredientID: ingredientID
         }
 
         // console.log(this.URL)

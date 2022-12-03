@@ -48,14 +48,14 @@ var Cabinet = /** @class */ (function () {
         var userId = pageURL[index];
         return ("/user/".concat(userId, "/cabinet"));
     };
-    Cabinet.prototype.addBottle = function () {
+    Cabinet.prototype.addBottle = function (ingredientID) {
         return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         data = {
-                            ingredientID: $ingredientToAdd.val()
+                            ingredientID: ingredientID
                         };
                         // console.log(this.URL)
                         // console.log(data)

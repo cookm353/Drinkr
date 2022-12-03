@@ -15,7 +15,8 @@ var cabinet = new Cabinet();
 // Handle adding a bottle to the cabinet
 $("#addIngredient").click(function (evt) {
     evt.preventDefault();
-    cabinet.addBottle();
+    var ingredientID = $('#ingredientList').val();
+    cabinet.addBottle(ingredientID);
 });
 // Handle removing a bottle from the cabinet
 $('.ingredient-card').on('click', '.remove-bottle', function (evt) {
