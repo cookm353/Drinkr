@@ -57,12 +57,8 @@ var Cabinet = /** @class */ (function () {
                         data = {
                             ingredientID: ingredientID
                         };
-                        // console.log(this.URL)
-                        // console.log(data)
                         return [4 /*yield*/, axios.post(this.URL, data)];
                     case 1:
-                        // console.log(this.URL)
-                        // console.log(data)
                         _a.sent();
                         return [2 /*return*/];
                 }
@@ -88,4 +84,14 @@ var Cabinet = /** @class */ (function () {
         });
     };
     return Cabinet;
+}());
+// Class to handle adding or removing favorite drinks
+var blah = /** @class */ (function () {
+    function blah() {
+    }
+    blah.prototype.addFavorite = function () {
+    };
+    blah.prototype.removeFavorite = function () {
+    };
+    return blah;
 }());

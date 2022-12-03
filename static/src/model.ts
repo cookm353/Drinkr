@@ -24,8 +24,6 @@ class Cabinet {
             ingredientID: ingredientID
         }
 
-        // console.log(this.URL)
-        // console.log(data)
         await axios.post(this.URL, data)
     }
     
@@ -36,5 +34,18 @@ class Cabinet {
 
         const deleteURL = `${this.URL}/delete`
         await axios.post(deleteURL, data)
+    }
+}
+
+// Class to handle adding or removing favorite drinks
+class blah {
+    url: string;
+
+    addFavorite() {
+
+    }
+
+    removeFavorite() {
+
     }
 }
