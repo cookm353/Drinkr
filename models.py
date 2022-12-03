@@ -21,6 +21,7 @@ class User(db.Model):
     email = db.Column(db.Text, nullable=False, unique=True)
     
     ingredients = db.relationship('Ingredient', backref='user', secondary='user_ingredients')
+    favorites = db.relationship('UserFavorites', backref='user', secondary='user_favorites')
     
     # Registration and authentication related methods
     
@@ -72,23 +73,21 @@ class User(db.Model):
     def getByUsername(cls, username):
         """Return a user based on their username"""
         return cls.query.filter_by(username=username).first()
-    
-    def edit(self):
-        ...
         
     @classmethod
     def delete(cls, userId):
         """Delete a user"""
         cls.query.filter_by(id=userId).delete()
         db.session.commit()
+        
+    @property
+    def favorites():
+        ...
     
     # Dunders
     
     def __repr__(self):
         return f"<User username={self.username} email={self.email}>"
-    
-    def __str__(self):
-        return "Username:\t{self.username}\nEmail:\t{self.email}"
           
     
 class Ingredient(db.Model):
@@ -170,9 +169,8 @@ class Comment(db.Model):
     def getByDrink(cls, drink):
         """Return all comments made on a drink"""
         drink = Drink.getByName(drink)
-    
-    # Dunders
-    
+
+
 class UserIngredients(db.Model):
     """Table storing ingredients a user's ingredients"""
     __tablename__ = 'user_ingredients'
@@ -203,8 +201,8 @@ class UserIngredients(db.Model):
         """Remove an ingredient from the user's cabinet"""
         UserIngredients.query.filter_by(user_id=user_id, ingredient_id=ingredient_id).delete()
         db.session.commit()
-   
-    
+
+
 class Drink(db.Model):
     """Table to hold names of drinks and links to API"""
     __tablename__ = 'drinks'
@@ -279,7 +277,18 @@ class Drink(db.Model):
         return [ingredient.name for ingredient in drinkIngredients]
 
         
-
+class UserFavorites(db.Model):
+    """Class modeling user favorite drinks"""
+    __tablename__ = 'user_favorites'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id',
+                                                  ondelete='CASCADE',
+                                                  onupdate='CASCADE'))
+    drink_id = db.Column(db.Integer, db.ForeignKey('drinks.id',
+                                                   ondelete='CASCADE',
+                                                   onupdate='CASCADE'))
+    
     
 '''
 class CustomDrink(db.Model):
