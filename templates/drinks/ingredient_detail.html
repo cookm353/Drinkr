@@ -5,24 +5,31 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row py-4">
-        <div class="col-1 left-gutter"></div>
+        <div class="col-2 left-gutter"></div>
         <div class="col">
             <div class="row">
                 <div class="col-10">
                     <h1 class="display-4">{{ingredient.name}}</h1>
+                    <a href="" class="btn btn-primary">Add to Cabinet</a>
                 </div>
             </div>
+            <div class="py-4" id="drinks-list">
+                <h2>Available Drinks</h2>
+                <ul>
+                {% for drink in drinks %}
+                    <li>
+                        <a class="drink-link" href="/drinks/{{drink.replace(' ', '%20')}}">{{drink}}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
         </div>
-        <div class="col-1 right-gutter"></div>
+        <div class="col-3">
+            <img src="https://www.thecocktaildb.com/images/ingredients/{{ingredient.name.replace(' ', '%20')}}.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-2 right-gutter"></div>
     </div>
 </div>
 
-<ul>
-{% for drink in drinks %}
-    <li>
-        <a href="/drinks/{{drink.replace(' ', '%20')}}">{{drink}}</a>
-    </li>
-{% endfor %}
-</ul>
 
 {% endblock %}
