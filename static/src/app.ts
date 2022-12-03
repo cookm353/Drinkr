@@ -19,23 +19,6 @@ $('.ingredient-card').on('click', '.remove-bottle', evt => {
     cabinet.removeBottle(id)
 })
 
-// Add description for ingredient on ingredient detail page
-async function getDescription(): void {
-    const pageURL: string = window.location.href
-    const ingredientIndex: number = pageURL.search('ts/') + 3
-    const ingredientName: string = pageURL.slice(ingredientIndex)
-    const resp = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredientName}`)
-    const description: string = resp['data']['ingredients'][0]['strDescription']
-
-    $('#ingredient-description').text(description)
-    // return description
-}
-
-$(window).ready(() => {
-    getDescription()
-    // console.log(description)
-})
-
 // Handle adding bottle to cabinet on ingredient page
 
 
