@@ -1,7 +1,6 @@
 # Save contents of API to text files to build certain tables
-from models import Drink, Glass, connect_db, db
+from models import Drink, connect_db, db
 from app import app
-import sqlalchemy
 import requests
 
 
@@ -23,17 +22,6 @@ def getDrinks():
     with open('seed_files/drinks.txt', 'a') as file:
         for drink in drinks:
             file.write(f'{drink}\n')
-        
-
-def getGlasses():
-    """Get glasses from API and write to text file"""
-    url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list'
-    glasses = requests.get(url).json()['drinks']
-    
-    
-    with open('seed_files/glasses.txt', 'a') as file:
-        for glass in glasses:
-            file.write(f'{glass["strGlass"]}\n')
 
 
 def getIngredients():
@@ -47,33 +35,24 @@ def getIngredients():
 
 
 def main():
-    # getDrinks()
-    # getGlasses()
-    # getIngredients()
-    
-    with open('seed_files/glasses.txt', 'r') as file:
-        glasses = file.readlines()
-        
-    glasses = [glass.replace('\n', '').strip() for glass in glasses]
-        
-    # for glass in glasses:
-    #     print(f'{glass}')
+    getDrinks()
+    getIngredients()
     
     # for ingredient in ingredients:
         # print(ingredient)
         
-    drinks = Drink.getAll()
-    url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+    # drinks = Drink.getAll()
+    # url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
     
-    for drink in drinks:
-        if ' ' in drink.name:
-            name = drink.name.replace(' ', '+')
-        else:
-            name = drink.name
+    # for drink in drinks:
+    #     if ' ' in drink.name:
+    #         name = drink.name.replace(' ', '+')
+    #     else:
+    #         name = drink.name
         
-        drink.url = f'{url}{name}'
-        db.session.add(drink)
-        db.session.commit()
+    #     drink.url = f'{url}{name}'
+    #     db.session.add(drink)
+    #     db.session.commit()
     
 
 if __name__ == "__main__":
