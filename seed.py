@@ -1,5 +1,5 @@
 from app import app
-from models import db, User, Ingredient, Drink, DrinkIngredient#, Glass
+from models import db, User, Ingredient, Drink, DrinkIngredient, Comment, UserFavorites, UserIngredients
 import requests
 
 def addUsers():
@@ -14,18 +14,6 @@ def addUsers():
 
     User.register(aliceData)
     User.register(bobData)
-
-def addGlasses():
-    Glass.query.delete()
-
-    with open('seed_files/glasses.txt', 'r') as file:
-        glasses = file.readlines()
-        
-    glasses = [glass.replace('\n', '').strip() for glass in glasses]
-    
-    for glass in glasses:
-        newGlass = Glass(name=glass)
-        db.session.add(newGlass)
 
 def addIngredients():
     Ingredient.query.delete()
@@ -85,6 +73,75 @@ def addDrinkIngredients():
                     ingredient_id=i_id, drink_id=d_id)
                 db.session.add(newDrinkIngredient)
 
+def addUserIngredients():
+    """Build user's cabinets"""
+    aliceIngredients = [
+        UserIngredients(user_id=1, ingredient_id=3), 
+        UserIngredients(user_id=1, ingredient_id=1),
+        UserIngredients(user_id=1, ingredient_id=12),
+        UserIngredients(user_id=1, ingredient_id=20),
+        UserIngredients(user_id=1, ingredient_id=9),
+        UserIngredients(user_id=1, ingredient_id=5),
+        UserIngredients(user_id=1, ingredient_id=31)
+    ]
+    
+    bobIngredients = [
+        UserIngredients(user_id=2, ingredient_id=37),
+        UserIngredients(user_id=2, ingredient_id=39),
+        UserIngredients(user_id=2, ingredient_id=23),
+        UserIngredients(user_id=2, ingredient_id=45),
+        UserIngredients(user_id=2, ingredient_id=43),
+        UserIngredients(user_id=2, ingredient_id=67)
+    ]
+    
+    for ingredient in aliceIngredients:
+        db.session.add(ingredient)
+        
+    for ingredient in bobIngredients:
+        db.session.add(ingredient)
+
+def addUserFavorites():
+    aliceFavorites = [
+        UserFavorites(user_id=1, drink_id=28),
+        UserFavorites(user_id=1, drink_id=50),
+        UserFavorites(user_id=1, drink_id=46),
+        UserFavorites(user_id=1, drink_id=66),
+        UserFavorites(user_id=1, drink_id=78)
+    ]
+    
+    bobFavorites = [
+        UserFavorites(user_id=2, drink_id=85),
+        UserFavorites(user_id=2, drink_id=129),
+        UserFavorites(user_id=2, drink_id=174),
+        UserFavorites(user_id=2, drink_id=238),
+        UserFavorites(user_id=2, drink_id=122),
+        UserFavorites(user_id=2, drink_id=270)
+    ]
+    
+    for drink in aliceFavorites:
+        db.session.add(drink)
+        
+    for drink in bobFavorites:
+        db.session.add(drink)
+
+def addComments():
+    manhattan = Comment(
+        content="Try adding orange bitters and leaving out the cherry, you won't be disappointed",
+        rating=3,
+        user_id=2,
+        drink_id=238
+    )
+    
+    frenchConnection = Comment(
+        content="Really hits the spot when you want something with a punch that goes down smoothly",
+        rating=5,
+        user_id=2,
+        drink_id=122
+    )
+    
+    db.session.add(manhattan)
+    db.session.add(frenchConnection)
+
 
 def main():
     # Reset tables
@@ -102,9 +159,15 @@ def main():
     # Commit changes
     db.session.commit()
     
-    # Add join tables
+    # Add tables based on ones above
     print('Adding drink ingredients...')
     addDrinkIngredients()
+    print("Building user's cabinets...")
+    addUserIngredients()
+    print('Adding comments...')
+    addComments()
+    print('Adding favorites...')
+    addUserFavorites()
     db.session.commit()
     
 
