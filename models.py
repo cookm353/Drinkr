@@ -21,7 +21,7 @@ class User(db.Model):
     email = db.Column(db.Text, nullable=False, unique=True)
     
     ingredients = db.relationship('Ingredient', backref='user', secondary='user_ingredients')
-    favorites = db.relationship('UserFavorites', backref='user', secondary='user_favorites')
+    favorites = db.relationship('Drink', backref='user', secondary='user_favorites')
     
     # Registration and authentication related methods
     
@@ -80,9 +80,9 @@ class User(db.Model):
         cls.query.filter_by(id=userId).delete()
         db.session.commit()
         
-    @property
-    def favorites():
-        ...
+    # @property
+    # def favorites():
+    #     ...
     
     # Dunders
     
@@ -144,8 +144,8 @@ class Comment(db.Model):
                                                  ondelete='CASCADE',
                                                  onupdate='CASCADE'))
     
-    user = db.relationship('User', backref='comment')
-    drink = db.relationship('Drink', backref='comment')
+    user = db.relationship('User', backref='comments')
+    drink = db.relationship('Drink', backref='comments')
     
     
     # Utility methods
