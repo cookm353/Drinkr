@@ -10,7 +10,9 @@
             <div class="row">
                 <div class="col-10">
                     <h1 class="display-4">{{ingredient.name}}</h1>
-                    <a href="" class="btn btn-primary">Add to Cabinet</a>
+                    {% if g.user %}
+                    <a href="" class="btn btn-primary add-to-cabinet" id="{{g.user.id}}-{{ingredient.id}}">Add to Cabinet</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="py-4" id="drinks-list">
