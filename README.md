@@ -215,4 +215,6 @@ pg_dump -U matt drinkr > drinkr.pgsql
 ### Reflections and Takeaways
 
 - Not every needs to be secured against CSRF
-- Taking some time to create a plan of action helps 
+- Taking some time to create a plan of action helps a lot
+- Adding print statements when executing a program that takes a while is a good way to keep track of progress (and make sure it hasn't frozen)
+- asdf
