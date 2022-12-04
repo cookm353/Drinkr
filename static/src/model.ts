@@ -12,8 +12,17 @@ class Cabinet {
     // Create base URL for requests
     getURL(): string {
         const pageURL: string = window.location.href
-        const index: number = pageURL.search('/cab') - 1
-        const userId: string = pageURL[index]
+        let userId: string
+
+        if (pageURL.includes('cabinet')) {
+            const index: number = pageURL.search('/cab') - 1
+            userId = pageURL[index]
+        } else if (pageURL.includes('ingredients')) {
+            const bttnID: string = $('.add-to-cabinet').attr('id')
+            const index = bttnID.search('-')
+            userId = bttnID.slice(0, index)
+        }
+        // if on ingredient page
         
         return(`/user/${userId}/cabinet`);
     }

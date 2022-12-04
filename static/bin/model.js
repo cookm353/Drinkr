@@ -44,8 +44,17 @@ var Cabinet = /** @class */ (function () {
     // Create base URL for requests
     Cabinet.prototype.getURL = function () {
         var pageURL = window.location.href;
-        var index = pageURL.search('/cab') - 1;
-        var userId = pageURL[index];
+        var userId;
+        if (pageURL.includes('cabinet')) {
+            var index = pageURL.search('/cab') - 1;
+            userId = pageURL[index];
+        }
+        else if (pageURL.includes('ingredients')) {
+            var bttnID = $('.add-to-cabinet').attr('id');
+            var index = bttnID.search('-');
+            userId = bttnID.slice(0, index);
+        }
+        // if on ingredient page
         return ("/user/".concat(userId, "/cabinet"));
     };
     Cabinet.prototype.addBottle = function (ingredientID) {
