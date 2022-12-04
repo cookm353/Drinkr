@@ -80,10 +80,6 @@ class User(db.Model):
         cls.query.filter_by(id=userId).delete()
         db.session.commit()
         
-    # @property
-    # def favorites():
-    #     ...
-    
     # Dunders
     
     def __repr__(self):
@@ -127,8 +123,8 @@ class Ingredient(db.Model):
     @property
     def drinksList(self) -> list:
         """Return drinks that can be made with this ingredient"""
-        return [drink.name for drink in self.drinks]
-    
+        return [drink.name for drink in self.drinks]   
+
 
 class Comment(db.Model):
     """Class modeling comments left by users"""
@@ -276,7 +272,7 @@ class Drink(db.Model):
         
         return [ingredient.name for ingredient in drinkIngredients]
 
-        
+
 class UserFavorites(db.Model):
     """Class modeling user favorite drinks"""
     __tablename__ = 'user_favorites'
@@ -289,87 +285,12 @@ class UserFavorites(db.Model):
                                                    ondelete='CASCADE',
                                                    onupdate='CASCADE'))
     
-    
-'''
-class CustomDrink(db.Model):
-    """Class modeling a custom drink uploaded by a user"""
-    
-    __tablename__ = "custom_drinks"
-    
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
-    instructions = db.Column(db.Text, nullable=False)
-    is_alcoholic = db.Column(db.Boolean, nullable=False)
-    img_URL = db.Column(db.Text, nullable=True)
-    video_URL = db.Column(db.Text, nullable=True)
-    glass_id = db.Column(db.Integer, db.ForeignKey('glasses.id',
-                                                   onupdate='CASCADE'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id',
-                                                  ondelete='CASCADE',
-                                                  onupdate='CASCADE'))
-    
-    user = db.relationship('User', backref='custom_drinks')
-    glass = db.relationship('Glass', backref='custom_drink')
-    ingredient = db.relationship('Ingredient', backref='custom_drinks', secondary='drink_ingredients')
-    drink_ingredient = db.relationship('DrinkIngredient', backref='custom_drinks')
-    
-    @classmethod
-    def add(cls, drinkData, userId):
-        """Add a custom drink to the DB"""
-        user = user.get(userId)
+    def add(user_id, drink_id):
+        """Add a drink to favorites"""
+        fave = UserFavorites(user_id=user_id, drink_id=drink_id)
+        db.session.add(fave)
+        db.session.commit()
         
-        ...
-        
-    @classmethod
-    def get(cls, drinkId):
-        """Retrieve a drink a user has added"""
-        return cls.query.get_or_404(drinkId)
-    
-    @classmethod
-    def getByUser(cls, userId):
-        """Retrieve all of the drinks a user has added"""
-        user = user.get(userId)
-        
-    @classmethod
-    def getByName(cls, name):
-        """Return a drink based on its name"""
-        cls.query.filter_by(name=name).first()
-        
-    def edit(self, drinkData):
-        """Edit a custom drink"""
-        ...
-        
-    @classmethod
-    def delete(cls, drinkId):
-        """Delete a custom drink"""
-        ...
-'''
-
-'''
-class Glass(db.Model):
-    """Class representing a glass type"""
-    
-    __tablename__ = 'glasses'
-    
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
-    
-    # Utility methods
-    
-    @classmethod
-    def get(cls, glassId):
-        """Fetch a glass"""
-        return cls.query.get_or_404(glassId)
-    
-    @classmethod
-    def getAll(cls):
-        return cls.query.all()
-    
-    # Dunders
-    
-    def __repr__(self):
-        return f'<Glass name={self.name}>'
-'''
            
 class DrinkIngredient(db.Model):
     """Join table between drinks and ingredients"""
