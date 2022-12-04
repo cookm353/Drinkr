@@ -36,35 +36,8 @@
             </div>
             <div class="col-2 right-gutter"></div>
         </div>
-        <!-- Drink variants -->
-        <!-- {% for variant in drinkInfo %}
-            <div class="row py-4">
-                <div class="col-1 left-gutter"></div>
-                <div class="col">
-                    <div class="row">
-                        <div class="col-10">
-                            <h1 class="display-4">{{variant['name']}}</h1>
-                        </div>
-                        <div class="col-2">
-                            <span><i class="fa-regular fa-star display-4 align-self-bottom"></i></span>
-                        </div>
-                    </div>
-                    <p>Recommended glass: {{ variant['glass'].title() }}</p>
-                    <span>Ingredients:</span>
-                    <ul>
-                    {% for ingredient in variant['ingredients'] %}
-                    <li>{{ ingredient }}</li>
-                    {% endfor %}
-                    </ul>
-                    <p>Directions:</p>
-                    <p>{{variant['instructions']}}</p>
-                </div>
-                <div class="col-3">
-                    <img src="{{variant['imgURL']}}" 
-                        alt="{{variant['name']}}" class="img-fluid">
-                </div>
-                <div class="col-1 right-gutter"></div>
-            </div>
-        {% endfor %} -->
+        {% for comment in comments %}
+        <p>{{comment.content}}</p>
+        {% endfor %}
     </div>
 {% endblock %}

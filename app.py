@@ -163,9 +163,16 @@ def show_drink(drinkName):
     """Drink detail page"""
     drink = Drink.getByName(drinkName)
     drinkInfo = Drink.getJSON(drink.url)
+    comments = drink.comments
     ingredients = drink.ingredientsList
     
-    return render_template('drinks/drink_detail.html', drinkInfo=drinkInfo, ingredients=ingredients)
+    
+    return render_template(
+        'drinks/drink_detail.html',
+        drinkInfo=drinkInfo,
+        ingredients=ingredients, 
+        comments=comments
+    )
 
 # Ingredient-related routes
 
