@@ -1,6 +1,7 @@
 import requests
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+from random import randint
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -79,6 +80,11 @@ class User(db.Model):
         """Delete a user"""
         cls.query.filter_by(id=userId).delete()
         db.session.commit()
+        
+    @property
+    def favoritesList(self):
+        faves = [fave.name for fave in self.favorites]
+        return faves
         
     # Dunders
     
@@ -166,7 +172,6 @@ class Comment(db.Model):
         newComment = cls(content=content, user_id=user_id, drink_id=drink_id)
         db.session.add(newComment)
         db.session.commit()
-
 
 
 class UserIngredients(db.Model):
@@ -266,6 +271,15 @@ class Drink(db.Model):
             drinkInfo.append(variant)
 
         return drinkInfo
+    
+    @classmethod
+    def getRandom(cls):
+        """Return a random drink"""
+        numDrinks = cls.query.count()
+        drinkID = randint(0, numDrinks - 1)
+        
+        return cls.get(drinkID)
+        
     
     @property
     def ingredientsList(self) -> list:
