@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, abort, request, g, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, User, Drink, Ingredient, DrinkIngredient, UserIngredients, UserFavorites, Comment, db
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, CommentForm
 
 app = Flask(__name__)
 CURR_USER_KEY = 'curr_user'
@@ -165,13 +165,15 @@ def show_drink(drinkName):
     drinkInfo = Drink.getJSON(drink.url)
     comments = drink.comments
     ingredients = drink.ingredientsList
+    form = CommentForm()
     
     
     return render_template(
         'drinks/drink_detail.html',
         drinkInfo=drinkInfo,
         ingredients=ingredients, 
-        comments=comments
+        comments=comments,
+        form=form
     )
 
 # Ingredient-related routes

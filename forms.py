@@ -20,3 +20,8 @@ class LoginForm(FlaskForm):
                            validators=[InputRequired(message='This field is required.')])
     password = PasswordField('Password: ',
                              validators=[InputRequired(message='This field is required.')])
+
+class CommentForm(FlaskForm):
+    """Form for adding comments"""
+    content = StringField("Message: ",
+                          validators=[InputRequired(message='This field is required.')])
