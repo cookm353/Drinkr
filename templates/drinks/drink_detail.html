@@ -12,7 +12,13 @@
                         <h1 class="display-3">{{drinkInfo[0]['name']}}</h1>
                     </div>
                     <div class="col-2">
-                        <span><i class="fa-regular fa-star display-4 align-self-bottom" id="fave-star"></i></span>
+                        {% if g.user %}
+                            {% if drinkInfo[0].name in g.user.favoritesList %}
+                            <span><i class="fa-solid fa-star display-4 align-self-bottom text-warning" id="fave-star"></i></span>
+                            {% else %}
+                            <span><i class="fa-regular fa-star display-4 align-self-bottom text-warning" id="fave-star"></i></span>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </div>
                 <p>Recommended glass: {{ drinkInfo[0]['glass'].title() }}</p>
@@ -36,6 +42,7 @@
             </div>
             <div class="col-2 right-gutter"></div>
         </div>
+
         <!-- New comment form -->
         <div class="row mt-4">
             <div class="col-2 left-gutter"></div>
@@ -65,6 +72,7 @@
             <div class="col-2 right-gutter"></div>
         </div>
         {% endif %}
+
         <!-- Comment display -->
         <div class="row pt-4">
             <div class="col-2 left-gutter"></div>
@@ -83,4 +91,5 @@
             <div class="col-2 right-gutter"></div>
         </div>
     </div>
+    <span class="drinkId" id="{{drinkInfo[0].id}}"></span>
 {% endblock %}
