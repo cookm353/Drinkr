@@ -158,8 +158,8 @@ def show_drinks():
     
     return render_template('drinks/drinks.html', drinks=drinks)
     
-@app.route('/drinks/<string:drinkName>')
-def show_drink(drinkName):
+@app.route('/drinks/<string:drinkName>', methods=['POST', 'GET'])
+def drink_detail(drinkName):
     """Drink detail page"""
     drink = Drink.getByName(drinkName)
     drinkInfo = Drink.getJSON(drink.url)
@@ -167,14 +167,23 @@ def show_drink(drinkName):
     ingredients = drink.ingredientsList
     form = CommentForm()
     
+    if form.validate_on_submit():
+        content = request.form.get('content')
+        
+        Comment.add(content=content, user_id=g.user.id, drink_id=drink.id)
+        return redirect(f'/drinks/{drinkName}')
     
-    return render_template(
-        'drinks/drink_detail.html',
-        drinkInfo=drinkInfo,
-        ingredients=ingredients, 
-        comments=comments,
-        form=form
-    )
+    else:
+        return render_template(
+            'drinks/drink_detail.html',
+            drinkInfo=drinkInfo,
+            ingredients=ingredients, 
+            comments=comments,
+            form=form
+        )
+    
+    
+@app.route('/drinks/<string:drinkName>', methods=['POST'])
 
 # Ingredient-related routes
 

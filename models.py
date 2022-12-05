@@ -162,9 +162,11 @@ class Comment(db.Model):
         return cls.query.filter_by(user_id=user.id).all()
     
     @classmethod
-    def getByDrink(cls, drink):
-        """Return all comments made on a drink"""
-        drink = Drink.getByName(drink)
+    def add(cls, content, user_id, drink_id):
+        newComment = cls(content=content, user_id=user_id, drink_id=drink_id)
+        db.session.add(newComment)
+        db.session.commit()
+
 
 
 class UserIngredients(db.Model):
