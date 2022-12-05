@@ -66,10 +66,11 @@
         </div>
         {% endif %}
         <!-- Comment display -->
-        <div class="row py-4">
+        <div class="row pt-4">
             <div class="col-2 left-gutter"></div>
             <div class="col">
-                <h3 class="py-0">Comments</h3><br><br>
+                <h3 class="py-0">Comments</h3>
+                <h5 class="pb-2">{{comments|length}} comments</h5>
                 {% for comment in comments %}
                 <div class="p-0">
                     <blockquote class="blockquote">
