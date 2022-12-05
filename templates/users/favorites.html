@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Favorite Drinks{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for drink in drinks %}
+        <div class="col-6 col-md-4 col-lg-3 py-2">
+            <div class="card">
+                <a href="">
+                    <img src="" alt="" class="img-fluid"></a>
+                    <div class="card-body">
+                        <h3 class="card-title text-center">{{ }}</h3>
+                    </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
