@@ -36,24 +36,7 @@ def getIngredients():
 
 def main():
     getDrinks()
-    getIngredients()
-    
-    # for ingredient in ingredients:
-        # print(ingredient)
-        
-    # drinks = Drink.getAll()
-    # url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-    
-    # for drink in drinks:
-    #     if ' ' in drink.name:
-    #         name = drink.name.replace(' ', '+')
-    #     else:
-    #         name = drink.name
-        
-    #     drink.url = f'{url}{name}'
-    #     db.session.add(drink)
-    #     db.session.commit()
-    
+    getIngredients()    
 
 if __name__ == "__main__":
     main()
