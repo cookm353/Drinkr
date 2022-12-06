@@ -41,7 +41,8 @@ pg_dump -U matt drinkr > drinkr.pgsql
   - [ ] Links to signing in, registering, or just going straight to drinks/ingredients
   - [ ] Add some flavor text
 - [ ] Write tests
-- [ ] 
+- [ ] Add new DB schema
+- [ ] Add user flow
 
 ### Reflections and Takeaways
 
