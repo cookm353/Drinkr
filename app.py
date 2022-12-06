@@ -88,7 +88,9 @@ def logout():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    randomDrink = Drink.getRandom()
+    drinkInfo = Drink.getJSON(randomDrink.url)
+    return render_template('index.html', drink=drinkInfo)
 
 # User-related routes
 
