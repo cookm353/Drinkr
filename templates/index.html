@@ -3,9 +3,65 @@
 {% block title %}Drinkr{% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+    <div class="row py-4">
+        <div class="col-2 left-gutter"></div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h3 class="display-3 text-center">Drinkr</h3>
+                    <h3 class="h-1 text-center">Cocktails and Other Drinks</h3>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-1"></div>
+                <div class="col">
+                    <p class="text-center">Are you looking for a good drink, but unsure what to make?  We have hundreds of recipes for you to choose from.  Whether you're in the mood for a classic or something more modern, you're guaranteed to find something that you'll enjoy.</p>
+                    <p class="text-center">When you sign up you can save drinks to your favorites, leave comments, add ingredients to your cabinet, and see what you can make with what you have!</p>
+                    <p class="text-center">Want to try something new?  Check the recipe below!</p>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <!-- Random drink display -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col">
+                        <h2 class="text-center">{{ drink[0]['name'] }}</h2>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row pb-3 justify-content-center">
+                    <div class="col-1"></div>
+                    <div class="col-3">
+                        <img src="{{ drink[0]['imgURL'] }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-1"></div>
+                    <div class="col-3 d-flex justify-content-center"><a href="/drinks/{{ drink[0].name.replace(' ', '%20') }}" 
+                        class="btn btn-primary m-auto">View recipe</a></div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 right-gutter"></div>
+    </div>
+</div>
+
 <div>
     {% for msg in get_flashed_messages() %}
     <p class="text-danger">{{ msg }}</p>
     {% endfor %}
 </div>
 {% endblock %}
+
+<!-- 
+row
+    col - drink pic
+    col
+        row
+            name
+            button
+ -->
