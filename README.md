@@ -4,7 +4,7 @@ by M. Cook
 
 ## Objective
 
-The website will be a convenient resource for looking up mixed drink recipes.  Users will be able to look up cocktail recipes by name, ingredient, type of glass, or type of drink.  Users will also be able to mark drinks as favorites and leave comments, which would be helpful for annotating recipes.
+The website will be a convenient resource for looking up mixed drink recipes.  Users will be able to look up cocktail recipes by name or ingredient.  Users will also be able to mark drinks as favorites and leave comments, which would be helpful for annotating recipes.
 
 ## Audience
 
@@ -15,7 +15,7 @@ This site will be intended for people of legal drinking age who enjoy dabbling i
 API: [The Cocktail DB](https://www.thecocktaildb.com/api.php)
 Database: PostgreSQL
 
-The API will be used to retrieve information on the drinks, and the database will store information on the users, comments left on drinks, and any custom drinks they add.
+The API will be used to retrieve information on the drinks, and the database will store information on the users, comments left on drinks, ingredients they own, and what their favorite drinks are.
 
 ## Approach
 
@@ -49,3 +49,4 @@ pg_dump -U matt drinkr > drinkr.pgsql
 - Not every form/input needs to be secured against CSRF
 - Taking some time to create a plan of action helps a lot
 - Adding print statements when executing a program that takes a while is a good way to keep track of progress (and make sure it hasn't frozen)
+- UI/UX design and writing copy for your site can be hard if you aren't used to it
