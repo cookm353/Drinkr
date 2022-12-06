@@ -137,18 +137,38 @@ def remove_bottle(userId):
         return redirect(f'/user/{g.user.id}/cabinet')
     
     ingredientID = request.json.get('ingredientID')
-    print(g.user.id, ingredientID)
     UserIngredients.removeIngredient(g.user.id, ingredientID)
     
     return redirect(f'/user/{g.user.id}/cabinet')
     
 
-@app.route('/user/<int:uderId>/comments')
-def user_comments(userId):
+@app.route('/user/<int:userId>/favorites')
+def show_favorites(userId):
+    """Display a user's favorite drinks"""
+    if not g.user:
+        flash("Access unauthorized")
+        return redirect('/')
+    
     user = User.get(userId)
+    drinks = user.favorites
     
-    return render_template('/users/comments.html', user=user)
+    return render_template('/users/favorites.html', user=user, drinks=drinks)
+
+@app.route('/user/<int:userId>/favorites', methods=['POST'])
+def manage_favorites(userId):
+    """Handle adding and removing drinks from favorites"""   
+    drinkId = request.json.get('drinkId')
+    isInFavorites = not UserFavorites.query.filter_by(user_id=userId, drink_id=drinkId).one_or_none()
     
+    if isInFavorites:
+        # If it isn't in favorites, add it!
+        UserFavorites.add(userId, drinkId)
+    else:
+        # If it is in favorites, remove it!
+        UserFavorites.remove(userId, drinkId)
+        
+    return redirect(f'/user/{userId}/favorites')
+
 # Drink-related routes
 
 @app.route('/drinks')
@@ -165,6 +185,7 @@ def drink_detail(drinkName):
     drinkInfo = Drink.getJSON(drink.url)
     comments = drink.comments
     ingredients = drink.ingredientsList
+    favorites = g.user.favorites
     form = CommentForm()
     
     if form.validate_on_submit():
@@ -179,6 +200,7 @@ def drink_detail(drinkName):
             drinkInfo=drinkInfo,
             ingredients=ingredients, 
             comments=comments,
+            favorites=favorites,
             form=form
         )
     
