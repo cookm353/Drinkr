@@ -1,9 +1,7 @@
-// const $addIngredientBttn = $("#addIngredient")
-// const $ingredientToAdd = $('#ingredientList')
-
 const cabinet = new Cabinet();
+const favorite = new Favorite();
 
-/** Ingredient-related event handlers */
+/** Cabinet-related event handlers */
 
 // Handle adding a bottle to the cabinet on cabinet page
 $("#addIngredient").click(evt => {
@@ -20,6 +18,25 @@ $('.ingredient-card').on('click', '.remove-bottle', evt => {
 })
 
 // Handle adding bottle to cabinet on ingredient page
+$('.add-to-cabinet').click(evt => {
+    // evt.preventDefault()
+    const bttnID: string = $('.add-to-cabinet').attr('id')
+    const index = bttnID.search('-') + 1
+    const ingredientID: string = bttnID.slice(index)
+    cabinet.addBottle(ingredientID)
+})
 
+/** Favorite-related event handlers */
 
-// Handle removing bottle from cabinet on ingredient page
+// Handle adding and removing drink from favorites
+$('.fa-star').click(evt => {
+    const isFavorite: boolean = $('.fa-star').hasClass('fa-solid')
+    $('.fa-star').toggleClass('fa-regular')
+    $('.fa-star').toggleClass('fa-solid')
+
+    if (isFavorite) {
+        favorite.add()
+    } else {
+        favorite.remove()
+    }
+})
