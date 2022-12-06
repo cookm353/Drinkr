@@ -5,10 +5,14 @@ html {
     position: relative;
 }
 
+p {
+    font-size: 1.3em;
+}
+
 /* body { */
 
-#main-div {
-    /* background-color: gray; */
+body {
+    background-color: lightgray;
 }
 
 a {
