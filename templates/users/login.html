@@ -13,10 +13,13 @@
             <div class="form-group">
                 {{ field.label }}
                 {{ field(class_='form-control') }}
-                {% for err in field.errors %}
-                <p class='text-danger small'>{{ err }}</p>
-                {% endfor %}
             </div>
+            {% for err in field.errors %}
+            <p class='text-danger small'>{{ err }}</p>
+            {% endfor %}
+        {% endfor %}
+        {% for msg in get_flashed_messages() %}
+        <p class="text-danger">{{ msg }}</p>
         {% endfor %}
         <button class="btn btn-secondary">Submit</button>
     </form>

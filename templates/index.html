@@ -3,5 +3,9 @@
 {% block title %}Drinkr{% endblock %}
 
 {% block content %}
-<div></div>
+<div>
+    {% for msg in get_flashed_messages() %}
+    <p class="text-danger">{{ msg }}</p>
+    {% endfor %}
+</div>
 {% endblock %}
