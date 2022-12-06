@@ -64,6 +64,7 @@ var Cabinet = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         data = {
+                            // Add ingredient to cabinet
                             ingredientID: ingredientID
                         };
                         return [4 /*yield*/, axios.post(this.URL, data)];
@@ -95,12 +96,43 @@ var Cabinet = /** @class */ (function () {
     return Cabinet;
 }());
 // Class to handle adding or removing favorite drinks
-var blah = /** @class */ (function () {
-    function blah() {
+var Favorite = /** @class */ (function () {
+    function Favorite() {
+        this.userID = $('.userId').attr('id');
+        this.URL = "/user/".concat(this.userID, "/favorites");
+        this.data = {
+            drinkId: $('.drinkId').attr('id')
+        };
     }
-    blah.prototype.addFavorite = function () {
+    Favorite.prototype.add = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // Add a drink to favorites
+                    return [4 /*yield*/, axios.post(this.URL, this.data)];
+                    case 1:
+                        // Add a drink to favorites
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    blah.prototype.removeFavorite = function () {
+    Favorite.prototype.remove = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    // Remove a drink from favorites
+                    return [4 /*yield*/, axios.post(this.URL, this.data)];
+                    case 1:
+                        // Remove a drink from favorites
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    return blah;
+    return Favorite;
 }());

@@ -12,7 +12,7 @@ class Cabinet {
     // Create base URL for requests
     getURL(): string {
         const pageURL: string = window.location.href
-        let userId: string
+        const userId: string
 
         if (pageURL.includes('cabinet')) {
             const index: number = pageURL.search('/cab') - 1
@@ -30,6 +30,7 @@ class Cabinet {
     async addBottle(ingredientID) {
     // Handle adding a bottle to a user's cabinet
         const data: cabinetJSON = {
+            // Add ingredient to cabinet
             ingredientID: ingredientID
         }
 
@@ -37,6 +38,7 @@ class Cabinet {
     }
     
     async removeBottle(ingredientID: string) {
+        // Remove ingredient from cabinet
         const data: cabinetJSON = {
             ingredientID: ingredientID
         }
@@ -47,14 +49,20 @@ class Cabinet {
 }
 
 // Class to handle adding or removing favorite drinks
-class blah {
-    url: string;
-
-    addFavorite() {
-
+class Favorite {
+    userID: string = $('.userId').attr('id')
+    URL: string = `/user/${this.userID}/favorites`
+    data: object = {
+        drinkId: $('.drinkId').attr('id')
     }
 
-    removeFavorite() {
+    async add() {
+        // Add a drink to favorites
+        await axios.post(this.URL, this.data)
+    }
 
+    async remove() {
+        // Remove a drink from favorites
+        await axios.post(this.URL, this.data)
     }
 }
