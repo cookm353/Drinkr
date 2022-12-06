@@ -188,7 +188,6 @@ def drink_detail(drinkName):
     drinkInfo = Drink.getJSON(drink.url)
     comments = drink.comments
     ingredients = drink.ingredientsList
-    favorites = g.user.favorites
     form = CommentForm()
     
     if form.validate_on_submit():
@@ -198,15 +197,26 @@ def drink_detail(drinkName):
         return redirect(f'/drinks/{drinkName}')
     
     else:
-        return render_template(
-            'drinks/drink_detail.html',
-            drinkInfo=drinkInfo,
-            ingredients=ingredients, 
-            comments=comments,
-            favorites=favorites,
-            form=form,
-            drink_id = drink.id
-        )
+        if g.user:
+            favorites = g.user.favorites
+            return render_template(
+                'drinks/drink_detail.html',
+                drinkInfo=drinkInfo,
+                ingredients=ingredients, 
+                comments=comments,
+                favorites=favorites,
+                form=form,
+                drink_id = drink.id
+            )
+        else:
+            return render_template(
+                'drinks/drink_detail.html',
+                drinkInfo=drinkInfo,
+                ingredients=ingredients, 
+                comments=comments,
+                form=form,
+                drink_id = drink.id
+            )
     
     
 @app.route('/drinks/<string:drinkName>', methods=['POST'])
