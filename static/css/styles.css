@@ -80,16 +80,13 @@ nav, .dropdown-menu {
     transition: color 0.5s;
 }
 
-/* Accordion Styles */
-
-
-/* Ingredient Detail Styles */
-
-
-
 
 /* BootStrap Overrides */
 
 .bg-dark {
     background: black;
+}
+
+.bg-secondary {
+    background: darkviolet;
 }
