@@ -244,31 +244,31 @@ class Drink(db.Model):
     @staticmethod
     def parseJSON(json):
         """Parse JSON into dictionary with relevant data"""
-        drinks = json['drinks']
-        drinkInfo = []
+        drink = json['drinks'][0]
+        drinkInfo = []  
+    
+        drinkDetails = {}
+        drinkDetails['name'] = drink['strDrink']
+        drinkDetails['glass'] = drink['strGlass']
+        drinkDetails['instructions'] = drink['strInstructions']
+        drinkDetails['isAlcoholic'] = drink['strAlcoholic']
+        drinkDetails['imgURL'] = drink['strDrinkThumb'].replace('\/', '/')
         
-        for drink in drinks:
-            variant = {}
-            variant['name'] = drink['strDrink']
-            variant['glass'] = drink['strGlass']
-            variant['instructions'] = drink['strInstructions']
-            variant['isAlcoholic'] = drink['strAlcoholic']
-            variant['imgURL'] = drink['strDrinkThumb'].replace('\/', '/')
-            variant['ingredients'] = []
-            variant['measures'] = []
-            
-            ingredients = []
-            measures = []
-            
-            for k, v in drink.items():
-                if 'Ingredient' in k and v is not None:
-                    ingredients.append(v)
-                    variant['ingredients'].append(v)
-                elif 'Measure' in k and v is not None:
-                    measures.append(v)
-                    variant['measures'].append(v)
-            
-            drinkInfo.append(variant)
+        drinkDetails['ingredients'] = []
+        drinkDetails['measures'] = []
+        
+        ingredients = []
+        measures = []
+        
+        for k, v in drink.items():
+            if 'Ingredient' in k and v is not None:
+                ingredients.append(v)
+                drinkDetails['ingredients'].append(v)
+            elif 'Measure' in k and v is not None:
+                measures.append(v)
+                drinkDetails['measures'].append(v)
+        
+        drinkInfo.append(drinkDetails)
 
         return drinkInfo
     
