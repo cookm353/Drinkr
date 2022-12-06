@@ -68,12 +68,13 @@ def login():
     if form.validate_on_submit():
         user = User.authenticate(form.username.data,
                                  form.password.data)
-        
         if user:
             do_login(user)
             return redirect('/')
+        else:
+            flash('Invalid username/password', 'danger')
+            return render_template('/users/login.html', form=form)
             
-    
     else:
         return render_template('users/login.html', form=form)
     
