@@ -201,7 +201,8 @@ def drink_detail(drinkName):
             ingredients=ingredients, 
             comments=comments,
             favorites=favorites,
-            form=form
+            form=form,
+            drink_id = drink.id
         )
     
     
