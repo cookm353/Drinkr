@@ -301,10 +301,17 @@ class UserFavorites(db.Model):
                                                    ondelete='CASCADE',
                                                    onupdate='CASCADE'))
     
-    def add(user_id, drink_id):
+    @classmethod
+    def add(cls, user_id, drink_id):
         """Add a drink to favorites"""
-        fave = UserFavorites(user_id=user_id, drink_id=drink_id)
+        fave = cls(user_id=user_id, drink_id=drink_id)
         db.session.add(fave)
+        db.session.commit()
+        
+    @classmethod
+    def remove(cls, user_id, drink_id):
+        """Remove a drink from favorites"""
+        cls.query.filter_by(user_id=user_id, drink_id=drink_id).delete()
         db.session.commit()
         
            
