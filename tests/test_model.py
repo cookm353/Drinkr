@@ -1,5 +1,5 @@
 from unittest import TestCase
-from models import db, User, Ingredient, UserIngredients, UserFavorites, Drink, DrinkIngredient
+from models import db, User, Ingredient, UserIngredients, UserFavorites, Drink, DrinkIngredient, Comment
 from app import app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinkr_test'
@@ -42,6 +42,23 @@ class TestModels(TestCase):
         cabinet3 = UserIngredients(user_id=1, ingredient_id=3)
         
         db.session.add_all([cabinet1, cabinet2, cabinet3])
+        
+        fave1 = UserFavorites(user_id=1, drink_id=1)
+        fave2 = UserFavorites(user_id=2, drink_id=2)
+        
+        db.session.add_all(fave1, fave2)
+        
+        drinkIngredient1 = DrinkIngredient(ingredient_id=1, drink_id=1)
+        drinkIngredient2 = DrinkIngredient(ingredient_id=2, drink_id=2)
+        drinkIngredient3 = DrinkIngredient(ingredient_id=3, drink_id=3)
+        
+        db.session.add_all([drinkIngredient1, drinkIngredient2, drinkIngredient3])
+        
+        comment1 = Comment(content='Satisfying', user_id=1, drink_id=1)
+        comment2 = Comment(content='Classy', user_id=2, drink_id=2)
+        comment3 = Comment(content='Tasty', user_id=1, drink_id=3)
+        
+        db.session.add_all([comment1, comment2, comment3])
         
         db.session.commit()
         
