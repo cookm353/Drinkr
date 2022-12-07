@@ -23,11 +23,38 @@ The API will be used to retrieve information on the drinks, and the database wil
 
 ![Database schema for Drinkr](static/images/db_schema.png "Schema")
 
+### User Flow
+
+Users will be able to use the site whether they create an account or not, but some features and pages will be restricted to users who are logged in.  
+
+#### Logged Out
+
+From the home page, users can make an account, log into their account, view drinks, view ingredients, or view the detail page for a random drink.  The user can view the list of drinks or ingredients in alphabetical order, and open the detail page for each drink/ingredient.
+
+The drink detail page provides the recommended glass, ingredients and amounts, directions, and any comments that have been left.  Users can also access the ingredient detail page for each ingredient if one exists.
+
+THe ingredient detail page displays the recipes available for ingredient, along with links to the drink detail page.
+
+#### Logged In
+
+The key features available to users who are logged in are the ability to add ingredients to their cabinet, save drinks to their favorites, and leave comments on drink detail pages.
+
+The cabinet page contains three collapsible sections.  The first displays the ingredients in a user's cabinet in a similar fashion to the drink and ingredient display pages.  The second contains a form to add an ingredient to their cabinet.  The final one shows a list of drinks that use the ingredients the user has in their cabinet.
+
+The favorites page displays drinks the user has added to their favorites, and has links to the detail page for each drink.
+
+The ingredient detail page has a button that can be used to add a given ingredient to the user's cabinet.  The drink detail page has a button that can be used to add the drink to their favorites and a form for adding new comments.
+
 ### Sensitive Information
 
 - Usernames and passwords
   - Passwords will be hashed using Bcrypt
   - A user's email address, first name, and last name will only be visible to the user
+
+### Technology Stack
+
+- Frontend: HTML, CSS, Bootstrap, JavaScript (jQuery, TypeScript, Axios)
+- Backend: Python (Flask, SQLAlchemy, WTForms, Jinja, Bcrypt), Postgres
 
 ### Database backup
 
@@ -37,9 +64,8 @@ pg_dump -U matt drinkr > drinkr.pgsql
 
 ### To-Do
 
-- [ ] Do landing page
-  - [ ] Links to signing in, registering, or just going straight to drinks/ingredients
-  - [ ] Add some flavor text
+- [x] Do landing page
+  - [x] Add some flavor text
 - [ ] Write tests
 - [ ] Add new DB schema
 - [ ] Add user flow
