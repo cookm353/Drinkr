@@ -3,8 +3,6 @@ from models import db, User, Ingredient, UserIngredients, UserFavorites, Drink, 
 from app import app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///drinkr_test'
-app.config['SQLALCHEMY_ECHO'] = False
-app.config['WTF_CSRF_ENABLED'] = False
 app.config['TESTING'] = True
 app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
 
@@ -267,13 +265,52 @@ class TestModels(TestCase):
         self.assertIsInstance(comment, Comment)
         self.assertEqual(comment.content, 'Refreshing!')
     
-    """DrinkIngredient-related tests"""
-    
-    
-    
     """Relationship tests"""
-    # Ingredient - drinks
-    # User - ingredients
-    # User - favorites
-    # User - comments
-    # Drink - comments
+    
+    def testGettingIngredientsFromDrink(self):
+        drink = Drink.get(1)
+        ingredients = drink.ingredients
+        
+        self.assertIsInstance(ingredients, list)
+        self.assertIsInstance(ingredients[0], Ingredient)
+        self.assertEqual(ingredients[0].name, 'Bourbon')
+        
+    def testGettingDrinksFromIngredient(self):
+        ingredient = Ingredient.get(1)
+        drinks = ingredient.drinks
+        
+        self.assertIsInstance(drinks, list)
+        self.assertIsInstance(drinks[0], Drink)
+        self.assertEqual(drinks[0].name, 'Manhattan')
+    
+    def testGettingUserIngredients(self):
+        user = User.get(1)
+        ingredients = user.ingredients
+        
+        self.assertIsInstance(ingredients, list)
+        self.assertIsInstance(ingredients[0], Ingredient)
+        self.assertEqual(ingredients[0].name, 'Bourbon')
+        
+    def testGettingUserFaves(self):
+        user = User.get(1)
+        faves = user.favorites
+        
+        self.assertIsInstance(faves, list)
+        self.assertIsInstance(faves[0], Drink)
+        self.assertEqual(faves[0].name, 'Manhattan')
+    
+    def testGettingUserComments(self):
+        user = User.get(1)
+        comments = user.comments
+        
+        self.assertIsInstance(comments, list)
+        self.assertIsInstance(comments[0], Comment)
+        self.assertEqual(comments[0].content, 'Satisfying')
+    
+    def testGettingDrinkComments(self):
+        drink = Drink.get(1)
+        comments = drink.comments
+        
+        self.assertIsInstance(comments, list)
+        self.assertIsInstance(comments[0], Comment)
+        self.assertEqual(comments[0].content, 'Satisfying')
