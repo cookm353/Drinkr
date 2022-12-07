@@ -46,7 +46,7 @@ class TestModels(TestCase):
         fave1 = UserFavorites(user_id=1, drink_id=1)
         fave2 = UserFavorites(user_id=2, drink_id=2)
         
-        db.session.add_all(fave1, fave2)
+        db.session.add_all([fave1, fave2])
         
         drinkIngredient1 = DrinkIngredient(ingredient_id=1, drink_id=1)
         drinkIngredient2 = DrinkIngredient(ingredient_id=2, drink_id=2)
@@ -223,9 +223,53 @@ class TestModels(TestCase):
     
     """UserFavorites-related tests"""
     
-    """Comment-related test"""
+    def testAddingFavorite(self):
+        count = UserFavorites.query.filter_by(user_id=1, drink_id=2).one_or_none()
+        self.assertEqual(count, None)
+        
+        UserFavorites.add(1, 2)
+        
+        count = UserFavorites.query.filter_by(user_id=1, drink_id=2).count()
+        self.assertEqual(count, 1)
+        
+    def testRemovingFavorite(self):
+        count = UserFavorites.query.filter_by(user_id=1, drink_id=1).count()
+        self.assertEqual(count, 1)
+        
+        UserFavorites.add(1, 2)
+        
+        count = UserFavorites.query.filter_by(user_id=1, drink_id=2).count()
+        self.assertEqual(count, 1)
+    
+    """Comment-related tests"""
+    
+    def testGettingComment(self):
+        comment = Comment.get(1)
+        
+        self.assertIsInstance(comment, Comment)
+        self.assertEqual(comment.content, 'Satisfying')
+        
+    def testInvalidGettingComment(self):
+        with self.assertRaises(Exception):
+            comment = Comment.get(4)
+        
+    def testGettingAllComments(self):
+        comments = Comment.getAll()
+        
+        self.assertIsInstance(comments, list)
+        for comment in comments:
+            self.assertIsInstance(comment, Comment)
+            
+    def testAddingComment(self):
+        Comment.add("Refreshing!", 2, 3)
+        comment = Comment.get(4)
+        
+        self.assertIsInstance(comment, Comment)
+        self.assertEqual(comment.content, 'Refreshing!')
     
     """DrinkIngredient-related tests"""
+    
+    
     
     """Relationship tests"""
     # Ingredient - drinks
