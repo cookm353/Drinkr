@@ -120,7 +120,7 @@ class Ingredient(db.Model):
     @classmethod
     def getAll(cls):
         """Return all ingredients"""
-        return cls.query.order_by(cls.name)
+        return cls.query.order_by(cls.name).all()
         
     def __repr__(self):
         repr = f"<Ingredient name={self.name}>"
