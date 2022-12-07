@@ -14,6 +14,10 @@ class TestModels(TestCase):
         User.query.delete()
         Ingredient.query.delete()
         Drink.query.delete()
+        Comment.query.delete()
+        UserIngredients.query.delete()
+        UserFavorites.query.delete()
+        DrinkIngredient.query.delete()
         
         alice = User(username='alice', password=User.hashPassword('test123'),
                      email='alice@test.com')
