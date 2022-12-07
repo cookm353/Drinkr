@@ -15,6 +15,7 @@ class TestModels(TestCase):
     def setUp(self):
         User.query.delete()
         Ingredient.query.delete()
+        Drink.query.delete()
         
         alice = User(username='alice', password=User.hashPassword('test123'),
                      email='alice@test.com')
@@ -28,6 +29,20 @@ class TestModels(TestCase):
         rum = Ingredient(name='Rum')
         
         db.session.add_all([bourbon, gin, rum])
+        
+        manhattan = Drink(name='Manhattan')
+        martini = Drink(name='Martini')
+        daquiri = Drink(name='Daquiri')
+        
+        db.session.add_all([manhattan, martini, daquiri])
+        db.session.commit()
+        
+        cabinet1 = UserIngredients(user_id=1, ingredient_id=1)
+        cabinet2 = UserIngredients(user_id=2, ingredient_id=2)
+        cabinet3 = UserIngredients(user_id=1, ingredient_id=3)
+        
+        db.session.add_all([cabinet1, cabinet2, cabinet3])
+        
         db.session.commit()
         
     def tearDown(self):
@@ -129,43 +144,75 @@ class TestModels(TestCase):
         
         self.assertEqual(repr(gin), '<Ingredient name=Gin>')
         
-        """Drink-related tests"""
+    """Drink-related tests"""
         
-        """UserIngredients-related tests"""
+    def testGettingDrink(self):
+        drink = Drink.get(1)
         
-        """UserFavorites-related tests"""
+        self.assertIsInstance(drink, Drink)
+        self.assertEqual(drink.name, 'Manhattan')
         
-        """Comment-related test"""
+    def testGettingInvalidDrink(self):
+        with self.assertRaises(Exception):
+            drink = Drink.get(4)
         
-        """DrinkIngredient-related tests"""
+    def testGettingDrinkByName(self):
+        manhattan = Drink.getByName('Manhattan')
         
-        """Relationship tests"""
-        # Ingredient - drinks
-        # User - ingredients
-        # User - favorites
-        # User - comments
-        # Drink - comments
-
-
-class TestDrink(TestCase):
-    def setUp(self):
-        ...
+        self.assertIsInstance(manhattan, Drink)
+        self.assertEqual(manhattan.name, 'Manhattan')
+        
+    def testGettingDrinkByInvalidName(self):
+        margarita = Drink.getByName('Margarita')
+        
+        self.assertNotIsInstance(margarita, Drink)
+        self.assertEqual(margarita, None)
+        
+    def testGettingAllDrinks(self):
+        drinks = Drink.getAll()
+        
+        self.assertIsInstance(drinks, list)
+        for drink in drinks:
+            self.assertIsInstance(drink, Drink)
     
-    def tearDown(self):
-        db.session.rollback()
-
+    def testDrinkRepr(self):
+        manhattan = Drink.get(1)
+        
+        self.assertEqual(repr(manhattan), '<Drink name=Manhattan>')
     
-class TestIngredient(TestCase):
-    def setUp(self):
-        Ingredient.query.delete()
+    """UserIngredients-related tests"""
+    
+    def testAddingIngredient(self):
+        UserIngredients.addIngredient(2, 3)
+        userIngredient = UserIngredients.query.filter_by(user_id=2, ingredient_id=3).first()
         
-        bourbon = Ingredient(name='Bourbon')
-        gin = Ingredient(name='Gin')
-        rum = Ingredient(name='Rum')
+        self.assertIsInstance(userIngredient, UserIngredients)
         
-        db.session.add_all([bourbon, gin, rum])
-        db.session.commit()
+    def testCheckingForPresentIngredient(self):
+        ingredientCount = UserIngredients.checkForIngredient(2, 2)
         
-    def tearDown(self):
-        db.session.rollback()
+        self.assertEqual(ingredientCount, 1)
         
+    def testCheckingForMissingIngredient(self):
+        ingredientCount = UserIngredients.checkForIngredient(1, 2)
+        
+        self.assertEqual(ingredientCount, 0)
+        
+    def testRemovingIngredient(self):
+        UserIngredients.removeIngredient(2, 2)
+        ingredientCount = UserIngredients.checkForIngredient(2, 2)
+        
+        self.assertEqual(ingredientCount, 0)
+    
+    """UserFavorites-related tests"""
+    
+    """Comment-related test"""
+    
+    """DrinkIngredient-related tests"""
+    
+    """Relationship tests"""
+    # Ingredient - drinks
+    # User - ingredients
+    # User - favorites
+    # User - comments
+    # Drink - comments
