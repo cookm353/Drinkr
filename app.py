@@ -94,12 +94,6 @@ def index():
 
 # User-related routes
 
-@app.route('/user/<int:userId>')
-def user_page(userId):
-    user = User.get(userId)
-    
-    return render_template('/users/user_detail.html', user=user)
-
 @app.route('/user/<int:userId>/cabinet')
 def show_cabinet(userId):
     """Show a user's cabinet"""
