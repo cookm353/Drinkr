@@ -232,7 +232,7 @@ class Drink(db.Model):
     @classmethod
     def getAll(cls):
         """Retrieve all drinks"""
-        return cls.query.order_by(cls.name)
+        return cls.query.order_by(cls.name).all()
 
     @staticmethod
     def getJSON(url):
@@ -279,7 +279,6 @@ class Drink(db.Model):
         drinkID = randint(0, numDrinks - 1)
         
         return cls.get(drinkID)
-        
     
     @property
     def ingredientsList(self) -> list:
@@ -287,6 +286,9 @@ class Drink(db.Model):
         drinkIngredients = self.ingredients
         
         return [ingredient.name for ingredient in drinkIngredients]
+    
+    def __repr__(self):
+        return f'<Drink name={self.name}>'
 
 
 class UserFavorites(db.Model):
