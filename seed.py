@@ -2,6 +2,42 @@ from app import app
 from models import db, User, Ingredient, Drink, DrinkIngredient, Comment, UserFavorites, UserIngredients
 import requests
 
+# Build seed files
+
+def getIngredients():
+    """Get ingredients from API and write to text file"""
+    url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+    ingredients = requests.get(url).json()['drinks']
+    
+    with open('seed_files/ingredients.txt', 'a') as file:
+        for ingredient in ingredients:
+            file.write(f'{ingredient["strIngredient1"]}\n')
+            
+def getDrinks():
+    """Get drinks for each ingredient from API, remove duplicates, and write to text file"""
+    url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='
+    unique_drinks = set()
+    
+    with open('seed_files/ingredients.txt', 'r') as file:
+        ingredients = file.readlines()
+        
+    ingredients = [ingredient[:-1].replace(' ', '%20') for ingredient in ingredients]
+    
+    for ingredient in ingredients:
+        print(f'Getting drinks for {ingredient}...')
+        resp = requests.get(f"{url}{ingredient.replace(' ', '%20')}").json()['drinks']
+        drinks = [drink['strDrink'] for drink in resp]
+        for drink in drinks:
+            unique_drinks.add(drink)
+        print('Done!')
+        
+    with open('seed_files/drinks.txt', 'a') as file:
+        for drink in unique_drinks:
+            file.write(f'{drink}\n')
+
+
+# Build DB
+
 def addUsers():
     User.query.delete()
 
@@ -147,6 +183,10 @@ def main():
     # Reset tables
     db.drop_all()
     db.create_all()
+    
+    # Build seed files
+    getIngredients()
+    getDrinks()
     
     # Add main tables
     print('Adding users...')
