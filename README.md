@@ -64,20 +64,12 @@ pg_dump -U matt drinkr > drinkr.pgsql
 
 ### To-Do
 
-- [x] Do landing page
-  - [x] Add some flavor text
 - [ ] Write tests
   - [x] Tests for models
   - [ ] Tests for app
     - [ ] Figure out why the tests won't run properly
-- [x] Add new DB schema
-- [x] Add user flow
-- [ ] Reconfigure seed file
-  - [ ] Get drinks from each ingredient
-  - [ ] Check if the drink is already present before adding
-  - [ ] Move logic from build_seed to seed for getting ingredients list
 - [ ] Fix type setting issues
-  - [ ] Larger font size for <p> elements should only be on the front page
+  - [ ] Larger font size for `<p>` elements should only be on the front page
   - [ ] Make sure the names of drinks nad recipes wrap in the cards
 
 ### Reflections and Takeaways
