@@ -67,8 +67,18 @@ pg_dump -U matt drinkr > drinkr.pgsql
 - [x] Do landing page
   - [x] Add some flavor text
 - [ ] Write tests
-- [ ] Add new DB schema
-- [ ] Add user flow
+  - [x] Tests for models
+  - [ ] Tests for app
+    - [ ] Figure out why the tests won't run properly
+- [x] Add new DB schema
+- [x] Add user flow
+- [ ] Reconfigure seed file
+  - [ ] Get drinks from each ingredient
+  - [ ] Check if the drink is already present before adding
+  - [ ] Move logic from build_seed to seed for getting ingredients list
+- [ ] Fix type setting issues
+  - [ ] Larger font size for <p> elements should only be on the front page
+  - [ ] Make sure the names of drinks nad recipes wrap in the cards
 
 ### Reflections and Takeaways
 
@@ -76,3 +86,7 @@ pg_dump -U matt drinkr > drinkr.pgsql
 - Taking some time to create a plan of action helps a lot
 - Adding print statements when executing a program that takes a while is a good way to keep track of progress (and make sure it hasn't frozen)
 - UI/UX design and writing copy for your site can be hard if you aren't used to it
+- If you're creating an app which needs several files to be run first to set everything up, create a master set up script (along with print statements to keep track of progress!)
+- You'll probably have to do some data cleaning when you're working with an API
+
+DB URL: postgresql-infinite-43802
