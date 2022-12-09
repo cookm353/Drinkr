@@ -1,425 +1,599 @@
-A1
-ABC
-Ace
-ACID
-Adam
-AT&T
-A. J.
-Affair
-Apello
-Avalon
-Abilene
-Addison
-Almeria
-Acapulco
-Affinity
-Applecar
-Aviation
-Adam Bomb
-Addington
-After sex
-Afterglow
-Afternoon
-Alexander
-Algonquin
-Allegheny
-B-52
-B-53
-Bijou
-Boxcar
-Big Red
-Bellini
-Bramble
-Balmoral
-Bluebird
-Brooklyn
-Bora Bora
-Boomerang
-Barracuda
-Brigadier
-Broadside
-Buccaneer
-Brain Fart
-Blackthorn
-Bob Marley
-Bible Belt
-Bubble Gum
-Bumble Bee
-Baby Eskimo
-Boston Sour
-Bahama Mama
-Casino
-Cafe Savoy
-Caipirinha
-Cream Soda
-Cuba Libra
-Cherry Rum
-Cuba Libre
-Corn n Oil
-Citrus Coke
-Casa Blanca
-Clover Club
-Caipirissima
-City Slicker
-Campari Beer
-Chicago Fizz
-Cosmopolitan
-Coffee-Vodka
-Casino Royale
-Corpse Reviver
-Chocolate Milk
-Clove Cocktail
-Coffee Liqueur
-Coke and Drops
-Chocolate Drink
-Cranberry Punch
-Derby
-Diesel
-Daiquiri
-Danbooka
-Downshift
-Dragonfly
-Dry Martini
-Dry Rob Roy
-Dirty Nipple
-Dirty Martini
-Darkwood Sling
-Dark and Stormy
-Dark Caipirinha
-Duchamp's Punch
-Damned if you do
-Dubonnet Cocktail
-Drinking Chocolate
-Death in the Afternoon
-Egg Cream
-Egg Nog #4
-English Highball
-Espresso Martini
-Espresso Rumtini
-Egg Nog - Healthy
-English Rose Cocktail
-Elderflower Caipirinha
-Egg-Nog - Classic Cooked
-Empellón Cocina's Fat-Washed Mezcal
-Frosé
-Frappé
-Foxy Lady
-French 75
-Figgy Thyme
-Frisco Sour
-Fruit Shake
-Fruit Cooler
-Freddy Kruger
-Funk and Soul
-Fuzzy Asshole
-French Martini
-French Negroni
-Fahrenheit 5000
-Flying Dutchman
-Frozen Daiquiri
-Fruit Flip-Flop
-Flying Scotchman
-French Connection
-Flaming Dr. Pepper
-Flaming Lamborghini
-Flander's Flake-Out
-Frozen Mint Daiquiri
-Frozen Pineapple Daiquiri
-GG
-Gimlet
-Godchild
-Gin Fizz
-Gin Sour
-Gagliardo
-Godmother
-Godfather
-Gluehwein
-Gin Tonic
-Gin Toddy
-Gin Smash
-Gin Daisy
-Gin Lemon
-Gin Sling
-Greyhound
-Gin Rickey
-Gin Squirt
-Grand Blue
-Gin Cooler
-Gin Swizzle
-Grass Skirt
-Grasshopper
-Grim Reaper
-Gin and Soda
-H.D.
-Honey Bee
-Hot Toddy
-Herbal flame
-Horse's Neck
-Happy Skipper
-Hunter's Moon
-Halloween Punch
-Havana Cocktail
-Holloween Punch
-Homemade Kahlua
-Hot Creamy Bush
-Harvey Wallbanger
-Hawaiian Cocktail
-Hemingway Special
-Highland Fling Cocktail
-Hot Chocolate to Die for
-Ipamena
-Ice Pick
-Iced Coffee
-Irish Cream
-Irish Coffee
-Irish Spring
-Imperial Fizz
-Irish Russian
-Imperial Cocktail
-Iced Coffee Fillip
-Irish Curdling Cow
-Jam Donut
-Jitterbug
-Jackhammer
-Jelly Bean
-Jello shots
-Jamaica Kiss
-John Collins
-Japanese Fizz
-Jamaican Coffee
-Just a Moonmint
-Jewel Of The Nile
-Jack Rose Cocktail
-Jack's Vanilla Coke
-Kir
-Karsk
-Kamikaze
-Kir Royale
-Kiwi Lemon
 Kurant Tea
-Kioki Coffee
-Kiwi Martini
-Kiss me Quick
-Kool-Aid Shot
-Kool First Aid
-Kentucky B And B
-Kentucky Colonel
-Kool-Aid Slammer
-Kiwi Papaya Smoothie
-Kill the cold Smoothie
-Limeade
-Lunch Box
-Lemon Drop
-Lemon Shot
-Long vodka
-Lassi Khara
-Lassi Raita
-Lemouroudji
-Loch Lomond
-London Town
-Lassi - Mango
-Lassi - Sweet
-Limona Corona
-Lord And Lady
-Lady Love Fizz
-Long Island Tea
-Lone Tree Cooler
-Lone Tree Cocktail
-Lazy Coconut Paloma
-Long Island Iced Tea
-Lemon Elderflower Spritzer
+Midnight Manx
+Jack Rose Cocktail
 Lassi - A South Indian Drink
-Melya
-Mojito
-Mimosa
-Mai Tai
-Martini
-Michelada
-Manhattan
-Margarita
-Mint Julep
-Mudslinger
-Martinez 2
-Moranguito
-Miami Vice
-Moscow Mule
-Mulled Wine
-Masala Chai
-Munich Mule
-Mocha-Berry
-Mango Mojito
-Mojito Extra
-Monkey Gland
-Midnight Mint
-Mary Pickford
-Monkey Wrench
-Mother's Milk
-Negroni
-New York Sour
-Nutty Irishman
-National Aquarium
-New York Lemonade
-Nuked Hot Chocolate
-Orgasm
-Old Pal
-Orangeade
-Orange Whip
-Orange Crush
-Orange Oasis
-Old Fashioned
-Oreo Mudslide
-Oatmeal Cookie
-Orange Push-up
-Orange Rosemary Collins
-Orange Scented Hot Chocolate
-Owen's Grandmother's Revenge
-Paloma
-Paradise
-Pink Gin
-Pegu Club
-Pink Lady
-Pink Moon
-Penicillin
-Pisco Sour
-Porto flip
-Pina Colada
-Pink Penocha
-Pure Passion
-Popped cherry
-Poppy Cocktail
-Port Wine Flip
-Planter's Punch
-Pineapple Paloma
-Pornstar Martini
-Planter’s Punch
-Port And Starboard
-Port Wine Cocktail
-Pysch Vitamin Light
-Pink Panty Pulldowns
-Passion Fruit Martini
-Pineapple Gingerale Smoothie
-Quentin
-Queen Bee
-Quick F**K
-Quick-sand
-Queen Charlotte
-Queen Elizabeth
-Quaker's Cocktail
-Quarter Deck Cocktail
-Rose
-Radler
-Rum Sour
-Rum Punch
-Rum Toddy
-Royal Fizz
-Rum Cooler
-Rum Runner
-Rusty Nail
-Red Snapper
-Royal Bitch
-Royal Flush
-Rum Cobbler
-Ruby Tuesday
-Rail Splitter
-Rosemary Blue
-Ramos Gin Fizz
-Royal Gin Fizz
-Rum Milk Punch
-Raspberry Julep
-Rum Screwdriver
-Raspberry Cooler
-Rum Old-fashioned
-Russian Spring Punch
-Radioactive Long Island Iced Tea
-Smut
-Spritz
-Scooter
-Sangria
-Stinger
-Sazerac
-Sidecar
-Snowday
-Spice 75
-Snowball
-Shot-gun
-Salty Dog
-Stone Sour
-Sea breeze
-Scotch Sour
-Sweet Tooth
-Screwdriver
-Sherry Flip
-Sol Y Sombra
-Shark Attack
-San Francisco
-Space Odyssey
-Sherry Eggnog
-Sweet Bananas
-Sweet Sangria
-Thriller
-The Galah
-Tia-Maria
-Tipperary
-Turkeyball
-Texas Sling
-Thai Coffee
-Tom Collins
-Tomato Tang
-Talos Coffee
-Tennesee Mud
-Tequila Fizz
 Tequila Sour
-Thai Iced Tea
+Abbey Martini
+Gin Swizzle
 The Last Word
-Turf Cocktail
-The Laverstoke
-Tequila Slammer
-Tequila Sunrise
-The Philosopher
-Tuxedo Cocktail
-Tequila Surprise
-Thai Iced Coffee
-The Jimmy Conway
-Texas Rattlesnake
-Vesper
-Victor
-Vampiro
-Vesuvio
-Veteran
-Van Vleet
-Vodka Fizz
-Vodka Lemon
-Vodka Slime
-Vodka Tonic
-Vodka Martini
-Vodka Russian
-Vermouth Cassis
-Victory Collins
-Vodka And Tonic
-Valencia Cocktail
-Whisky Mac
-White Lady
-Wine Punch
-Wine Cooler
+Pineapple Paloma
+Dry Rob Roy
+Mango Mojito
+Pink Moon
+Dry Martini
+Amaretto Shake
+Bombay Cassis
+Dirty Martini
+Archbishop
+Amaretto Sunrise
+Gin Squirt
+747
+After sex
+Port Wine Cocktail
+Gin Sling
+Apricot Lady
+Negroni
+Sangria The  Best
+Broadside
+Michelada
+Midnight Cowboy
+Brave Bull Shooter
+Dark Caipirinha
+Grim Reaper
+Clove Cocktail
 Winter Rita
+Harvey Wallbanger
+Van Vleet
+Bubble Gum
+Queen Elizabeth
+Salty Dog
+Oreo Mudslide
+Microwave Hot Cocoa
+Smashed Watermelon Margarita
+Stinger
+French 75
+Mudslinger
+The Philosopher
+Lunch Box
+Banana Milk Shake
 Whiskey Sour
-White Russian
-Winter Paloma
-White Wine Sangria
-Whitecap Margarita
-Waikiki Beachcomber
-Yellow Bird
-Yoghurt Cooler
-Zorro
-Zinger
-Zoksel
-Zombie
-Zambeer
-Zorbatini
-Zenmeister
-Zipperhead
-Zima Blaster
-Zizi Coin-coin
-Zimadori Zinger
-Zippy's Revenge
+Godmother
+GG
+Blueberry Mojito
+Berry Deadly
+Banana Cream Pi
+Tom Collins
+Tia-Maria
+Kentucky Colonel
 Ziemes Martini Apfelsaft
+Mai Tai
+Mary Pickford
+Frappé
+Yoghurt Cooler
+A Day at the Beach
+Scooter
+Gin Smash
+Diesel
+Amaretto Mist
+Abilene
+The Evil Blue Thing
+Gin Tonic
+Frosé
+Brain Fart
+Amaretto Liqueur
+Highland Fling Cocktail
+Loch Lomond
+Bluebird
+Funk and Soul
+A Furlong Too Late
+Tomato Tang
+Margarita
+Brandy Flip
+Radioactive Long Island Iced Tea
+Queen Bee
+Tequila Sunrise
+Kentucky B And B
+Zizi Coin-coin
+Swedish Coffee
+Gin and Soda
+Imperial Fizz
+Kir Royale
+Orange Oasis
+Gin Fizz
+Strawberry Shivers
+Blackthorn
+Rum Milk Punch
+Strawberry Daiquiri
+Adam Bomb
+Ramos Gin Fizz
+Limeade
+Bob Marley
+Artillery
+Whitecap Margarita
+Fruit Shake
+Pink Lady
+Baby Eskimo
+Amaretto fizz
+Absolutely Cranberry Smash
+Bourbon Sour
+Bumble Bee
+Hemingway Special
+English Highball
+Whisky Mac
+Alabama Slammer
+Cherry Rum
+French Connection
+Scottish Highland Liqueur
+Gin Daisy
+Lady Love Fizz
+Spiced Peach Punch
+Alfie Cocktail
+Grizzly Bear
+Vodka Fizz
+Martini
+Pina Colada
+Victory Collins
+Kioki Coffee
+410 Gone
+Tequila Fizz
+Espresso Rumtini
+Lazy Coconut Paloma
+Adam
+Talos Coffee
+B-52
+Horse's Neck
+Adam Sunrise
+Banana Strawberry Shake Daiquiri
+Jelly Bean
+Almeria
+747 Drink
+Sea breeze
+Pink Gin
+Coke and Drops
+Arizona Antifreeze
+Planter’s Punch
+Oatmeal Cookie
+Grape lemon pineapple Smoothie
+Scotch Sour
+Golden dream
+Flying Dutchman
+Allegheny
+Pornstar Martini
+Bloody Mary
+Zorro
+After Five
+Pink Panty Pulldowns
+Frozen Pineapple Daiquiri
+Apello
+A True Amaretto Sour
+Fahrenheit 5000
+Zimadori Zinger
+Ice Pick
+After Dinner Cocktail
+French Negroni
+Duchamp's Punch
+Homemade Kahlua
+Jackhammer
+Egg Cream
+Alice Cocktail
+Cranberry Cordial
+Caipirinha
+Mint Julep
+Mother's Milk
+Melya
+Derby
+London Town
+Kool-Aid Shot
+Nutty Irishman
+Spice 75
+Cuba Libre
+Snake Bite (UK)
+Gin Basil Smash
+Espresso Martini
+Avalanche
+Rosemary Blue
+Death in the Afternoon
+A. J.
+Happy Skipper
+Mocha-Berry
+Coffee-Vodka
+Zoksel
+Jamaican Coffee
+Mountain Bramble
+Pineapple Gingerale Smoothie
+Hot Toddy
+Moscow Mule
+Quentin
+Frisco Sour
+Lone Tree Cooler
+Atlantic Sun
+Abbey Cocktail
+Gin And Tonic
+Danbooka
+San Francisco
+Spanish chocolate
+Bijou
+Rum Cooler
+Bahama Mama
+Bee's Knees
+A Gilligan's Island
+Sunny Holiday Punch
+Irish Cream
+Tipperary
+Tommy's Margarita
+Rum Toddy
+Boxcar
+Mississippi Planters Punch
+Zorbatini
+City Slicker
+Casino Royale
+Absolut Sex
+Thai Iced Tea
+A midsummernight dream
+Caribbean Orange Liqueur
+Bruised Heart
+Turkeyball
+Kool-Aid Slammer
+Lassi Raita
+Acapulco
+Bellini Martini
+Amaretto Sunset
+Apple Highball
+Just a Moonmint
+Lemon Drop
+Lemouroudji
+Malibu Twister
+Vodka Slime
+Almond Chocolate Coffee
+Jamaica Kiss
+Gluehwein
+A1
+Godfather
+Dubonnet Cocktail
+Dirty Nipple
+AT&T
+Gin Toddy
+Rum Cobbler
+Rum Screwdriver
+New York Sour
+Brandon and Will's Coke Float
+Grass Skirt
+3 Wise Men
+Orange Scented Hot Chocolate
+Yellow Bird
+Masala Chai
+Chicago Fizz
+Lemon Elderflower Spritzer
+Grasshopper
+Arise My Love
+California Lemonade
+Americano
+Affair
+Pegu Club
+Waikiki Beachcomber
+Hot Chocolate to Die for
+Absinthe #2
+Corn n Oil
+Bramble
+Amaretto Sweet & Sour
+Lord And Lady
+A Night In Old Mandalay
+Wine Cooler
+Bible Belt
+Tennesee Mud
+Thai Iced Coffee
+Karsk
+Radler
+Quaker's Cocktail
+Japanese Fizz
+Orangeade
+Stone Sour
+A Splash of Nash
+Apple Cider Punch
+Jitterbug
+Havana Cocktail
+Zipperhead
+Brandy Alexander
+Elderflower Caipirinha
+Figgy Thyme
+Applecar
+Angel Face
+Kiwi Martini
+Aloha Fruit punch
+Ipamena
+Popped cherry
+Iced Coffee
+Ruby Tuesday
+Iced Coffee Fillip
+Bruce's Puce
+Sloe Gin Cocktail
+National Aquarium
+Space Odyssey
+ABC
+Brandy Cobbler
+Gagliardo
+Damned if you do
+Freddy Kruger
+Apple Pie with A Crust
+Red Snapper
+Sol Y Sombra
+Old Fashioned
+155 Belmont
+Boulevardier
+Rose
+Champagne Cocktail
+Afterglow
+Banana Cantaloupe Smoothie
+Downshift
+Between The Sheets
+Royal Gin Fizz
+Ace
+Aviation
+Tuxedo Cocktail
+Long Island Iced Tea
+Egg Nog - Healthy
+The Galah
+Paradise
+Singapore Sling
+Cranberry Punch
+Salted Toffee Martini
+Rum Sour
+Caipirissima
+Green Goblin
+Shark Attack
+Hunter's Moon
+Turf Cocktail
+Casa Blanca
+Adios Amigos Cocktail
+Orange Whip
+Alice in Wonderland
+Amaretto Tea
+Strawberry Lemonade
+Kir
+Gin Rickey
+Apple Grande
+Lassi - Sweet
+Addison
+Poppy Cocktail
+Sweet Tooth
+Irish Spring
+Scotch Cobbler
+Dragonfly
+Bermuda Highball
+Amaretto Rose
+Queen Charlotte
+Wine Punch
+Classic Old-Fashioned
+Mojito
+Irish Russian
+Blue Mountain
+Algonquin
+Vesper
+Boston Sour
+Monkey Wrench
+Aquamarine
+New York Lemonade
+Dark and Stormy
+Texas Sling
+Bourbon Sling
+Alaska Cocktail
+Campari Beer
+Frozen Daiquiri
+Cream Soda
+Fruit Flip-Flop
+Porto flip
+Apple Slammer
+Vesuvio
+Fruit Cooler
+Absolutly Screwed Up
+Vermouth Cassis
+Monkey Gland
+Winter Paloma
+After Supper Cocktail
+Blue Lagoon
+Martinez 2
+Kiwi Papaya Smoothie
+Paloma
+Gin Sour
+Mojito Extra
+Absolut Summertime
+Vodka Tonic
+Absolut limousine
+A Piece of Ass
+Brooklyn
+Flying Scotchman
+Caribbean Boilermaker
+Addington
+H.D.
+Boston Sidecar
+Orgasm
+Apricot punch
+Atomic Lokade
+Long Island Tea
+Chocolate Drink
+Brandy Sour
+Long vodka
+Frozen Mint Daiquiri
+Gin Cooler
+Valencia Cocktail
+Raspberry Julep
+Veteran
+Pink Penocha
+Blind Russian
+Balmoral
+Banana Strawberry Shake
+501 Blue
+Chocolate Beverage
+Garibaldi Negroni
+Quick F**K
+Castillian Hot Chocolate
+Army special
+John Collins
+Owen's Grandmother's Revenge
+Rum Old-fashioned
+Cherry Electric Lemonade
+Cuba Libra
+Mango Orange Smoothie
+Arizona Twister
+Rum Runner
+White Lady
+Gin Lemon
+Chocolate Black Russian
+Arthur Tompkins
+Flander's Flake-Out
+Port Wine Flip
+Cosmopolitan Martini
+Irish Coffee
+Manhattan
+Nuked Hot Chocolate
+Egg Nog #4
+69 Special
+Bacardi Cocktail
+Empellón Cocina's Fat-Washed Mezcal
+Black & Tan
+Amaretto Stone Sour
+Bloody Maria
+Cafe Savoy
+Foxy Lady
+Aztec Punch
+Port And Starboard
+Chocolate Monkey
+Kamikaze
+Sidecar Cocktail
+California Root Beer
+Moranguito
+Spiking coffee
+Snakebite and Black
+Lone Tree Cocktail
+151 Florida Bushwacker
+Vodka Martini
+Brainteaser
+Rail Splitter
+Gideon's Green Dinosaur
+Sex on the Beach
+Girl From Ipanema
+Snowball
+Blue Hurricane
+Vodka Lemon
+Daiquiri
+Orange Crush
+The Strange Weaver
+The Jimmy Conway
+Amaretto And Cream
+Addison Special
+Zombie
+B-53
+Absolutely Fabulous
+Irish Curdling Cow
+Smut
+Amaretto Stone Sour Alternative
+Almond Joy
+Bora Bora
+Black Russian
+Pisco Sour
+Pure Passion
+Quarter Deck Cocktail
+Amaretto Stinger
+Sazerac
+Captain Kidd's Punch
+Banana Daiquiri
+Apple Berry Smoothie
+Boozy Snickers Milkshake
+Russian Spring Punch
+Pysch Vitamin Light
+Tequila Slammer
+Clover Club
+Martinez Cocktail
+Affinity
+Afternoon
+Orange Push-up
+Gentleman's Club
+Hot Creamy Bush
+Cocktail Horse’s Neck
+Sidecar
+Bobby Burns Cocktail
+Screaming Orgasm
+Imperial Cocktail
+3-Mile Long Island Iced Tea
+Bellini
+Mimosa
+Drinking Chocolate
+Holloween Punch
+Screwdriver
+Sangria
+Vampiro
+Fuzzy Asshole
+Big Red
+English Rose Cocktail
+French Martini
+Avalon
+Vodka Russian
+Jewel Of The Nile
+Surf City Lifesaver
+Royal Fizz
+Baby Guinness
+A.D.M. (After Dinner Mint)
+Tequila Surprise
+Sweet Bananas
+Cosmopolitan
+Rusty Nail
+Kill the cold Smoothie
+Shanghai Cocktail
+Munich Mule
+Hawaiian Cocktail
+Butter Baby
+White Russian
+Vodka And Tonic
+9 1/2 Weeks
+Corpse Reviver
+Bleeding Surgeon
+Herbal flame
+Sherry Flip
+57 Chevy with a White License Plate
+White Wine Sangria
+110 in the shade
+Old Pal
+Sherry Eggnog
+Thai Coffee
+Sweet Sangria
+Orange Rosemary Collins
+Penicillin
+The Laverstoke
+Bloody Punch
+Passion Fruit Martini
+Boomerang
+Thriller
+Allies Cocktail
+Victor
+Honey Bee
+Snowday
+Apple Karate
+Applejack
+Bounty Hunter
+Lassi - Mango
+Coffee Liqueur
+Creme de Menthe
+Slippery Nipple
+Zippy's Revenge
+Gimlet
+Lassi Khara
+Texas Rattlesnake
+Autodafé
+Mulled Wine
+Greyhound
+Amaretto Sour
+Artillery Punch
+Casino
+Belgian Blue
+Barracuda
+Godchild
+Zambeer
+Angelica Liqueur
+Arctic Fish
+Adonis Cocktail
+Flaming Dr. Pepper
+Egg-Nog - Classic Cooked
+Alexander
+Strawberry Margarita
+Chocolate Milk
+Absolut Evergreen
+Lemon Shot
+Butterfly Effect
+Black Forest Shake
+Flaming Lamborghini
+Jam Donut
+Rum Punch
+Blue Margarita
+Planter's Punch
+Adam & Eve
+Jello shots
