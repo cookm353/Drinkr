@@ -2,6 +2,10 @@
 
 by M. Cook
 
+## Deployed Website
+
+[Drinkr](https://drinkr.herokuapp.com/)
+
 ## Objective
 
 The website will be a convenient resource for looking up mixed drink recipes.  Users will be able to look up cocktail recipes by name or ingredient.  Users will also be able to mark drinks as favorites and leave comments, which would be helpful for annotating recipes.
@@ -69,8 +73,9 @@ pg_dump -U matt drinkr > drinkr.pgsql
   - [ ] Tests for app
     - [ ] Figure out why the tests won't run properly
 - [ ] Fix type setting issues
-  - [ ] Larger font size for `<p>` elements should only be on the front page
-  - [ ] Make sure the names of drinks nad recipes wrap in the cards
+  - [x] Larger font size for `<p>` elements should only be on the front page
+  - [x] Make sure the names of drinks nad recipes wrap in the cards
+  - [ ] Make cards the same height
 
 ### Reflections and Takeaways
 
@@ -80,5 +85,3 @@ pg_dump -U matt drinkr > drinkr.pgsql
 - UI/UX design and writing copy for your site can be hard if you aren't used to it
 - If you're creating an app which needs several files to be run first to set everything up, create a master set up script (along with print statements to keep track of progress!)
 - You'll probably have to do some data cleaning when you're working with an API
-
-DB URL: postgresql-infinite-43802
