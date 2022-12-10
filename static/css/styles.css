@@ -5,13 +5,7 @@ html {
     position: relative;
 }
 
-p {
-    font-size: 1.3em;
-}
-
-/* body { */
-
-body {
+body, .card {
     background-color: lightgray;
 }
 
@@ -65,9 +59,21 @@ nav, .dropdown-menu {
     color: blue;
 }
 
-/* Form Styles */
+/* Card Styles */
 
+.card {
+    max-width: 100%;
+    overflow: hidden;
+}
 
+.card-text {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.card a:hover {
+    text-decoration: none;
+}
 
 /* Detail Page Styles */
 
