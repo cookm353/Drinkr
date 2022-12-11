@@ -80,7 +80,9 @@
             <div class="col">
                 <h3 class="py-0">Comments</h3>
                 {% if comments|length == 0 %}
-                <h6 class="pb-2">Be the first to comment!</h6>
+                    {% if g.user %}
+                    <h6 class="pb-2">Be the first to comment!</h6>
+                    {% endif %}
                 {% else %}
                 <h6 class="pb-2">{{comments|length}} comments</h6>
                 {% endif %}
